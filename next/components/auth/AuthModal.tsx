@@ -1,5 +1,6 @@
 import React from "react";
 import LoginModal from "./LoginModal";
+import SignUpModal from "./SignUpModal";
 
 interface IProps{
     closeModal: () => void;
@@ -10,9 +11,9 @@ const AuthModal: React.FC<IProps> = ({ closeModal }) => {
 
   return (
     <>
-      {/* {authMode === "signup" && <SignUpModal closeModal={closeModal} />} */}
+      <SignUpModal closeModal={closeModal} />
       {/* {authMode === "login" && <div>로그인</div>} */}
-      <LoginModal closeModal={closeModal} />
+      {/* <LoginModal closeModal={closeModal} /> */}
     </>
   );
 };
