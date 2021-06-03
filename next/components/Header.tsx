@@ -8,7 +8,6 @@ import HeaderAuths from "./HeaderAuths";
 import HeaderUserProfile from "./HeaderUserProfile";
 
 const Container = styled.div`
-
     position: sticky;
     top : 0;
     width : 100%;
@@ -195,8 +194,8 @@ const Header: React.FC = () => {
               <span>Q &amp; A</span>
             </div>
           </li>
-          {!isLoggedIn && <HeaderAuths />}
-          {isLoggedIn && <HeaderUserProfile />}
+          {isLoggedIn && <HeaderAuths />}
+          {/* {isLoggedIn && <HeaderUserProfile />} */}
         </ul>
       </div>
 
