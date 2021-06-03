@@ -1,15 +1,13 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from "react";
+import styled from "styled-components";
 
-const IndexPage = () => (
-  <Layout title="음 ">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const Container = styled.div`
+    font-size: 21px;
+    color : gray;
+`;
 
-export default IndexPage
+const index: React.FC = () => {
+  return <Container>hello world</Container>;
+};
+
+export default index;
