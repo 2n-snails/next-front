@@ -1,12 +1,3 @@
-node버전 : 14.17.0
-npm버전 : 6.14.13
-
-
-Rest 클라이언트  
-https://insomnia.rest/download   
-
-
-
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
