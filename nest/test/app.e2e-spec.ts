@@ -10,6 +10,10 @@ describe('AppController (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
       console.log('ㅗ디ㅣo');
+      console.log('ㅗ디ㅣo');
+      console.log('ㅗ디ㅣo');
+      console.log('ㅗ디ㅣo');
+      console.log('ㅗ디ㅣo');
       
     }).compile();
 
@@ -21,6 +25,7 @@ describe('AppController (e2e)', () => {
           console.log('hi');
           console.log('hi');
           console.log('hi');
+          console.log('hi');console.log('hi');console.log('hi');
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
