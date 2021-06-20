@@ -9,12 +9,6 @@ describe('AppController (e2e)', () => {
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
-      console.log('ㅗ디ㅣo');
-      console.log('ㅗ디ㅣo');
-      console.log('ㅗ디ㅣo');
-      console.log('ㅗ디ㅣo');
-      console.log('ㅗ디ㅣo');
-      
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -22,10 +16,6 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
-          console.log('hi');
-          console.log('hi');
-          console.log('hi');
-          console.log('hi');console.log('hi');console.log('hi');
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
