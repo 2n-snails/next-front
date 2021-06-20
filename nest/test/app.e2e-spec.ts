@@ -22,17 +22,17 @@ describe('AppController (e2e)', () => {
   });
 
 
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
-  console.log('asd');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
+  console.log('aaa');
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
