@@ -18,6 +18,9 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
+          console.log('hi');
+          console.log('hi');
+          console.log('hi');
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
