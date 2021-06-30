@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Products from "../Product/Product";
 
 const HomeContainer = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    
 `;
 
 const Home: React.FC = () => {
@@ -11,7 +14,13 @@ const Home: React.FC = () => {
   console.log(productsList);
 
   return (
-    <HomeContainer />
+    <HomeContainer>
+      {productsList.map((data:any) => (
+        <>
+          <Products data={data} />
+        </>
+      ))}
+    </HomeContainer>
   );
 };
 

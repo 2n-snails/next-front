@@ -31,22 +31,22 @@ const init = {
 };
 
 //상품 더미데이터 생성
-// init.productsList = init.productsList.concat(
-//   Array(20).fill().map(() => ({
-//     id: shortId.generate(),
-//     User: {
-//       id: shortId.generate(),
-//       nickname: faker.name.findName(),
-//     },
-//     content: faker.lorem.paragraph(),
-//     Images: [{
-//       src: faker.image.image
-//     }]
-//   }))
-// );
 init.productsList = init.productsList.concat(
-
+  Array(20).fill().map(() => ({
+    id: shortId.generate(),
+    User: {
+      id: shortId.generate(),
+      nickname: faker.name.findName(),
+    },
+    content: faker.lorem.paragraph(),
+    Images: [{
+      src: faker.image.image
+    }]
+  }))
 );
+// init.productsList = init.productsList.concat(
+
+// );
 
 const products = (state = init, action) => produce(state, (draft) => {
   switch (action.type) {

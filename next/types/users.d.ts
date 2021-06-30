@@ -15,10 +15,10 @@ export type UserType = {
 //* users.json에 저장된 유저 타입
 export type StoredUserType = {
 
-    id: number;
+  id: number;
   email: string;
   password: string;
   nickName: string;
-    profileImage: string;
+  profileImage: string;
 
 };
