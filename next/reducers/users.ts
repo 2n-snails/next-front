@@ -1,10 +1,19 @@
 import produce from "immer";
+import { UserType } from "../types/users.d";
 import { userAction, LOAD_USERS_REQUEST, LOAD_USERS_SUCCESS, LOAD_USERS_ERROR } from "../action/users";
 
-const init = {
+export interface UserStateProps{
+  User: Array<UserType> ;
+  loadUsersLoading: boolean;
+  loadUsersSuccess: boolean;
+  loadUsersError: object | null;
+}
+
+const init: UserStateProps = {
+  User: [],
   loadUsersLoading: false,
   loadUsersSuccess: false,
-  loadUsersError: null
+  loadUsersError: null,
 };
 
 const users = (state = init, action:userAction) => produce(state, (draft) => {

@@ -2,6 +2,7 @@ export const LOAD_PRODUCTS_REQUEST = "LOAD_PRODUCTS_REQUEST";
 export const LOAD_PRODUCTS_SUCCESS = "LOAD_PRODUCTS_SUCCESS";
 export const LOAD_PRODUCTS_ERROR = "LOAD_PRODUCTS_ERROR";
 
-export type Product = {
-
-}
+export type ProductAction =
+    | typeof LOAD_PRODUCTS_REQUEST
+    | typeof LOAD_PRODUCTS_SUCCESS
+    | typeof LOAD_PRODUCTS_ERROR;
