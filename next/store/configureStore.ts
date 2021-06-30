@@ -1,4 +1,4 @@
-import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { createWrapper } from "next-redux-wrapper";
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "@redux-saga/core";
@@ -20,6 +20,6 @@ const configureStore = () => {
 };
 
 //2번째는 option 객체입니다.
-const wrapper = createWrapper(configureStore, true);
+const wrapper = createWrapper(configureStore, { debug: true });
 
 export default wrapper;

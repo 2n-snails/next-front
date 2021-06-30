@@ -1,7 +1,8 @@
 import React from "react";
+import { NextPage } from "next";
 import Home from "../components/Home/Home";
 
-const index: React.FC = () => {
+const index: NextPage = () => {
   return <Home />;
 };
 

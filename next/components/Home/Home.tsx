@@ -1,14 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import faker from "faker";
-
-faker.seed(1000);
 
 const HomeContainer = styled.div`
     display: flex;
 `;
 
-const Home : React.FC = () => {
+const Home: React.FC = () => {
+  const { productsList } = useSelector((state:any) => state.products);
+  console.log(productsList);
+
   return (
     <HomeContainer />
   );
