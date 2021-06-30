@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import useModal from "../hooks/useModal";
 import AuthModal from "./auth/AuthModal";
 
