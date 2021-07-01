@@ -1,0 +1,4 @@
+#!/bin/sh
+."/next/$(dirname "$0")/_/husky.sh"
+
+npm run check-types
