@@ -67,6 +67,9 @@
         "ts": "never",
         "tsx": "never"
       } // import 시 확장자명은 사용하지 않는다.
-    ]
+    ],
+    "import/no-unresolved": "off", // 절대경로 사용
+    "no-console": "off", // 콘솔 사용
+    "array-callback-return": "off"
   }
 }
