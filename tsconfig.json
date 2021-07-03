@@ -20,7 +20,8 @@
       "@/pages/*": ["pages/*"],
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
-      "@/containers/*": ["containers/*"]
+      "@/containers/*": ["containers/*"],
+      "@/assets/*": ["assets/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "reducers/*"],

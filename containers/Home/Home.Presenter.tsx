@@ -1,9 +1,6 @@
 import Product from "@/components/Product";
 import React from "react";
 
-// myProps.valTxt.map((text, index) => {
-//   obj[index] = text;
-// });
 const HomePresenter = ({ productsList }: any) => {
   return (
     <>
