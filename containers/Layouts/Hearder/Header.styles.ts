@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import palette from "@/styles/palette";
 
 export const HeaderContainer = styled.div`
   position: sticky;
@@ -59,7 +58,7 @@ export const HeaderContainer = styled.div`
       cursor: pointer;
       outline: none;
       &:hover {
-        background-color: ${palette.gray_f7};
+        background-color: ${({ theme }) => theme.gray_f7};
       }
     }
 
@@ -130,7 +129,7 @@ export const HeaderContainer = styled.div`
       cursor: pointer;
 
       &:hover {
-        background-color: ${palette.gray_f7};
+        background-color: ${({ theme }) => theme.gray_f7};
       }
     }
 
@@ -138,7 +137,7 @@ export const HeaderContainer = styled.div`
       width: 100%;
       height: 1px;
       margin: 8px 0;
-      background-color: ${palette.gray_dd};
+      background-color: ${({ theme }) => theme.gray_f7};
     }
   }
 `;
