@@ -1,4 +1,6 @@
 import { AppProps } from "next/dist/next-server/lib/router/router";
+import withReduxSaga from "next-redux-saga";
+import wrapper from "@/store/configureStore";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -9,4 +11,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default App;
+export default wrapper.withRedux(withReduxSaga(App));

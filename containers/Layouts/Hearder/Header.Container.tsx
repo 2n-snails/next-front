@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const HeaderContainer = ({ isLoggedIn, setIsLoggedIn }) => {
+  console.log(isLoggedIn, setIsLoggedIn);
   return (
     <>
       <div className="header-logo">

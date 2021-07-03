@@ -21,7 +21,12 @@
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
       "@/containers/*": ["containers/*"],
-      "@/assets/*": ["assets/*"]
+      "@/assets/*": ["assets/*"],
+      "@/store/*": ["store/*"],
+      "@/sagas/*": ["sagas/*"],
+      "@/reducers/*": ["reducers/*"],
+      "@/action/*": ["action/*"],
+      "@/types/*": ["types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "reducers/*"],
