@@ -1,6 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+interface API {
+  req: NextApiRequest;
+  res: NextApiResponse;
+}
+export default async ({ req, res }: API): Promise<void> => {
   if (req.method === 'POST') {
     return res.end();
   }
