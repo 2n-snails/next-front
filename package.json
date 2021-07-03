@@ -1,5 +1,5 @@
 {
-  "name": "typescript-project",
+  "name": "next-front",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -13,8 +13,18 @@
     "lint": "eslint **/*.{ts,tsx}",
     "lint:fix": "eslint **/*.{ts,tsx} --fix"
   },
-  "repository": "https://github.com/hyemin23/typescript-project.git",
-  "author": "hyemin23 <hm_stom@naver.com>",
+  "repository": "https://github.com/2n-snails/next-front.git",
+  "contributors": [
+    {
+      "name": "hyemin23",
+      "email": "hm_stom@naver.com"
+    },
+    {
+      "name": "kyungseo-park",
+      "email": "troublesome.dev@gmail.com",
+      "url": "http://kspark.link"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@redux-saga/core": "^1.1.3",
