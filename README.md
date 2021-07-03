@@ -1,1 +1,1 @@
-"# next-front" 
+"# next-front"

@@ -4,13 +4,13 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 interface types {
-  styles: JSX.Element;
+  styles: any;
   html: string;
-  head?: JSX.Element[];
+  head?: any;
 }
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<types> {
@@ -37,7 +37,7 @@ class MyDocument extends Document {
     }
   }
 
-  render(): JSX.Element {
+  render() {
     return (
       <Html>
         <Head>

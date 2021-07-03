@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "test-all": "npx yarn-run-all lint check-types format lint:fix",
-    "prepare": "cd .. && husky install next/.husky",
+    "test-all": "npx lint check-types format lint:fix",
+    "prepare": "husky install .husky",
     "check-types": "tsc --noEmit",
     "lint": "eslint **/*.{ts,tsx}",
-    "lint:fix": "eslint **/*.{ts,tsx} --fix"
+    "lint:fix": "eslint **/*.{ts,tsx} --fix",
+    "precommit": "lint-staged"
   },
   "repository": "https://github.com/2n-snails/next-front.git",
   "contributors": [
