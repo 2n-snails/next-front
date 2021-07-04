@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import HeaderAuths from "@/components/Header/HeaderAuths";
+import SearchIcon from "@/assets/svg/search.svg";
 
 const HeaderContainer = ({ isLoggedIn, setIsLoggedIn }) => {
   console.log(isLoggedIn, setIsLoggedIn);
@@ -19,7 +21,9 @@ const HeaderContainer = ({ isLoggedIn, setIsLoggedIn }) => {
       <div className="header-list-wrapper">
         <ul className="header-list-main-menu">
           <li>
-            <div>{/* <SearchIcon /> */}</div>
+            <div>
+              <SearchIcon />
+            </div>
           </li>
           <li>
             <div>
@@ -31,7 +35,7 @@ const HeaderContainer = ({ isLoggedIn, setIsLoggedIn }) => {
               <span>Q &amp; A</span>
             </div>
           </li>
-          {/* {isLoggedIn && <HeaderAuths />} */}
+          {isLoggedIn && <HeaderAuths />}
           {/* {isLoggedIn && <HeaderUserProfile />} */}
         </ul>
       </div>
