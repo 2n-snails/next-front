@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import SearchIcon from "../public/static/svg/search.svg";
-import palette from "../styles/palette";
-import useModal from "../hooks/useModal";
+import SearchIcon from "../../public/static/svg/search.svg";
+import palette from "../../styles/palette";
 import HeaderAuths from "./HeaderAuths";
-import HeaderUserProfile from "./HeaderUserProfile";
 
 const Container = styled.div`
     position: sticky;
