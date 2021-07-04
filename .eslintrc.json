@@ -11,7 +11,7 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts", ".svg"]
       }
     }
   },
@@ -71,5 +71,8 @@
     "import/no-unresolved": "off", // 절대경로 사용
     "no-console": "off", // 콘솔 사용
     "array-callback-return": "off"
+  },
+  "globals": {
+    "JSX": true // JSX 에러 발생 안하게
   }
 }

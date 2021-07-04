@@ -21,14 +21,21 @@
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
       "@/containers/*": ["containers/*"],
-      "@/assets/*": ["assets/*"],
+      "@/assets/*": ["public/static/*"],
       "@/store/*": ["store/*"],
       "@/sagas/*": ["sagas/*"],
       "@/reducers/*": ["reducers/*"],
       "@/action/*": ["action/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/hooks/*": ["hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "reducers/*"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "reducers/*",
+    "types/image.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

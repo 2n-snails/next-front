@@ -1,20 +1,29 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
+
+const withImages = require("next-images");
+module.exports = withImages({
+  exclude: path.resolve(__dirname, "public/static/"),
+  webpack(config) {
+    return config;
+  },
+});
 
 module.exports = {
   webpack(config) {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      src: path.join(__dirname, "src/"),
-    };
-
     config.module.rules.push({
-      // 웹팩설정에 로더 추가함
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ["@svgr/webpack"],
+      test: /\.svg$/i,
+      issuer: { and: [/\.(js|ts|md)x?$/] },
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            prettier: false,
+            svgo: true,
+            svgoConfig: { plugins: [{ removeViewBox: false }] },
+            titleProp: true,
+          },
+        },
+      ],
     });
     return config;
   },

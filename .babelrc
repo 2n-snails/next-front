@@ -1,4 +1,29 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["styled-components", { "ssr": true }], "inline-react-svg"]
+  "plugins": [
+    ["styled-components", { "ssr": true }],
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@/pages": "./pages",
+          "@/components": "./components",
+          "@/styles": "./styles",
+          "@/containers": "./containers",
+          "@/assets": "./public/static",
+          "@/store": "./store",
+          "@/sagas": "./sagas",
+          "@/reducers": "./reducers",
+          "@/action": "./action",
+          "@/types": "./types",
+          "@/hooks": "./hooks",
+          "@components": "./components",
+          "@icons": "./assets/icons",
+          "@views": "./views"
+        }
+      }
+    ]
+  ]
 }
