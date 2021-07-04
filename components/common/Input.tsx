@@ -6,7 +6,6 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputComponent: React.FC<IProps> = ({ icon, ...props }) => {
-  console.log("console.log,", { ...props });
   return (
     <InputGroup iconExist={!!icon}>
       <input placeholder="비밀번호" {...props} />

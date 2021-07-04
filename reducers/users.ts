@@ -23,7 +23,7 @@ const init: UserStateProps = {
 
 const users = (state = init, action: userAction) =>
   produce(state, (draft) => {
-    console.log(draft);
+    console.error("draft 이거 뭐에요? : ", draft);
     switch (action) {
       case LOAD_USERS_REQUEST:
         break;

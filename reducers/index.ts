@@ -6,7 +6,6 @@ import users from "./users";
 const rootReducer = (state: any, action: any) => {
   switch (action.type) {
     case HYDRATE:
-      console.log("하이드레이트", action);
       return action.payload;
     default: {
       const combineReducer = combineReducers({

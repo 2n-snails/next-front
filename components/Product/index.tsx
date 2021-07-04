@@ -5,7 +5,6 @@ interface IProps {
   index?: number;
 }
 const Product: React.FC<IProps> = ({ data }) => {
-  console.log(data);
   return (
     <>
       <div>asd</div>

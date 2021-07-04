@@ -7,7 +7,7 @@ function loadProductsAPI() {
 }
 
 function* loadProducts(action: any) {
-  console.log(action);
+  console.error("action 이건 왜 넣으신거에요? ", action);
   try {
     const results = yield* call(loadProductsAPI);
     yield put({
@@ -15,7 +15,6 @@ function* loadProducts(action: any) {
       data: results.data,
     });
   } catch (error) {
-    console.log("요청 실패");
     yield put({
       type: LOAD_PRODUCTS_ERROR,
       data: error.response.data,
