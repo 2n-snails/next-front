@@ -1,3 +1,3 @@
-import { Home } from "@/containers/Home/Home.Container";
+import { HomeContainer } from "@/containers/Home/Home.Container";
 
-export default Home;
+export default HomeContainer;

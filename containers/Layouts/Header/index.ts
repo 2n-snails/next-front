@@ -1,3 +1,3 @@
-import Header from "@/containers/Layouts/Header/Header.Presenter";
+import HeaderPresenter from "@/containers/Layouts/Header/Header.Presenter";
 
-export default Header;
+export default HeaderPresenter;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
+export const HeaderSection = styled.div`
   position: sticky;
   top: 0;
   width: 100%;

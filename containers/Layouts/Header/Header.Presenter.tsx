@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import HeaderContainer from "./Header.Container";
 
-const Header: React.FC = () => {
+// 모든 기능은 HeaderPresenter 에서 처리한다.
+const HeaderPresenter: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
@@ -10,4 +11,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default HeaderPresenter;
