@@ -1,31 +1,12 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import CloseIcon from "../../../public/static/svg/close.svg";
-import MailIcon from "../../../public/static/svg/mail.svg";
-import PasswordIcon from "../../../public/static/svg/password.svg";
-import PersonIcon from "../../../public/static/svg/person.svg";
-import HidePassword from "../../../public/static/svg/hidePassword.svg";
-import Button from "../../common/Button";
-import Input from "../../common/Input";
-
-const Container = styled.div`
-  width: 568px;
-  padding: 32px;
-  height: 614px;
-  background-color: white;
-  z-index: 11;
-
-  .closeIcon {
-    display: block;
-    cursor: pointer;
-    margin: 0 0 40px auto;
-  }
-
-  .input-wrapper {
-    position: relative;
-    margin-bottom: 16px;
-  }
-`;
+import { SignUpModalContainer } from "@/styles/Header/SignUp";
+import CloseIcon from "@/assets/svg/close.svg";
+import InputComponent from "@/components/common/Input";
+import MailIcon from "@/assets/svg/mail.svg";
+import PasswordIcon from "@/assets/svg/password.svg";
+import PersonIcon from "@/assets/svg/person.svg";
+import HidePassword from "@/assets/svg/hidePassword.svg";
+import ButtonComponent from "@/components/common/Button";
 
 interface IProps {
   closeModal: () => void;
@@ -38,20 +19,32 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
     setHidePassword(!hidePassword);
   };
   return (
-    <Container onSubmit={() => {}}>
+    <SignUpModalContainer onSubmit={() => {}}>
       <CloseIcon className="closeIcon" onClick={closeModal} />
 
       <div className="input-wrapper">
-        <Input placeholder="이메일 주소" type="email" icon={<MailIcon />} />
+        <InputComponent
+          placeholder="이메일 주소"
+          type="email"
+          icon={<MailIcon />}
+        />
       </div>
       <div className="input-wrapper">
-        <Input placeholder="닉네임" type="text" icon={<PersonIcon />} />
+        <InputComponent
+          placeholder="닉네임"
+          type="text"
+          icon={<PersonIcon />}
+        />
       </div>
       <div className="input-wrapper">
-        <Input placeholder="주소" type="text" icon={<PasswordIcon />} />
+        <InputComponent
+          placeholder="주소"
+          type="text"
+          icon={<PasswordIcon />}
+        />
       </div>
       <div className="input-wrapper">
-        <Input
+        <InputComponent
           placeholder="비밀번호"
           type={hidePassword ? "password" : "text"}
           icon={
@@ -68,9 +61,9 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         <textarea />
       </div>
       <div className="sign-up-moal-submit-button-wrapper">
-        <Button type="submit">가입하기</Button>
+        <ButtonComponent type="submit">가입하기</ButtonComponent>
       </div>
-    </Container>
+    </SignUpModalContainer>
   );
 };
 
