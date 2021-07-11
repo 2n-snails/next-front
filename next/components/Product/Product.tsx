@@ -21,16 +21,37 @@ const ProductContainer = styled.div`
         flex-direction: column;
         align-items: center;
         
-
-        .product_title {
+        /* 2줄 넘어가면 ... 표시 처리하기 */
+        .product_title h1{
+          text-align: center;
           padding : 1rem 0;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: bold;
+          width: 250px;
+         white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         }
 
-        .product_content{
+        .product_content p{
+          display: block;
+          text-align: left;
           padding: 1rem;
           font-size: 15px;
+          width: 250px;
+          
+          
+          /* 라인 설정 6줄 부터 ... 표시 */
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 6;
+          -webkit-box-orient: vertical;
+
+          /* 높이 설정 */
+          line-height: 1.5em;
+          max-height: 10em;
+
         }
     }
 
@@ -64,6 +85,7 @@ const Product: React.FC<IProps> = ({ data }) => {
         </figure>
       </div>
 
+      {/* 상품 정보 */}
       <div className="product_main_items_info">
         {/* 상품 제목 */}
         <div className="product_title">
@@ -71,7 +93,11 @@ const Product: React.FC<IProps> = ({ data }) => {
         </div>
         {/* 상품내용 */}
         <div className="product_content">
-          <h2>{data.productContent}</h2>
+          <p>{data.productContent}</p>
+        </div>
+        {/* 상품 업로드 날짜 */}
+        <div>
+          <p>상품 업로드 날짜 : {data.productUploadDate}</p>
         </div>
       </div>
 
