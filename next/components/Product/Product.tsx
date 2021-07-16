@@ -1,4 +1,5 @@
-import React from "react";
+import { date } from "faker/locale/zh_TW";
+import React, { useCallback, useMemo } from "react";
 import styled from "styled-components";
 
 const ProductContainer = styled.div`
@@ -74,6 +75,28 @@ interface IProps{
     data: object;
 }
 const Product: React.FC<IProps> = ({ data }) => {
+  function datefunction(asd) {
+    const year = asd.split("-")[0];
+    const month = asd.split("-")[1];
+    const day = asd.split("-")[2];
+
+    const postDate = new Date(year, month, day);
+    const presentDate = new Date();
+
+    const postRealDate = presentDate.getTime() - postDate.getTime();
+
+    console.log(postRealDate);
+
+    const postRealDay = postRealDate / (1000 * 3600 * 24);
+
+    // 월
+    console.log(postRealDay * 30);
+    //  년
+    console.log(postRealDay * 30 * 12);
+
+    return postRealDay;
+  }
+
   console.log(data);
 
   return (
@@ -97,7 +120,8 @@ const Product: React.FC<IProps> = ({ data }) => {
         </div>
         {/* 상품 업로드 날짜 */}
         <div>
-          <p>상품 업로드 날짜 : {data.productUploadDate}</p>
+          <p>{datefunction(data.productUploadDate)}</p>
+          <span>{data.Comments.length}개의 댓글</span>
         </div>
       </div>
 

@@ -25,13 +25,17 @@ const init = {
     productPrice: 10000,
     productView: 1,
     productState: false,
+    productUploadDate: "2018-01-01",
     //이미지 정보
     Images: [{
       id: shortId.generate(),
       src: faker.image.image(),
     }],
     //댓글
-    Comments: [{}],
+    Comments: [{
+      id: shortId.generate(),
+      userName: "혜민"
+    }],
   }]
 };
 
@@ -52,12 +56,14 @@ init.productsList = init.productsList.concat(
     Images: [{
       id: shortId.generate(),
       src: faker.image.image()
-    }]
+    }],
+    Comments: [{
+      id: shortId.generate(),
+      userName: faker.name.findName()
+    }],
+    productUploadDate: "2018-01-05",
   }))
 );
-// init.productsList = init.productsList.concat(
-
-// );
 
 const products = (state = init, action) => produce(state, (draft) => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 // 일반 selectbox
