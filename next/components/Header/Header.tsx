@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import SearchIcon from "../../public/static/svg/search.svg";
+import Search from "../../public/static/svg/search.svg";
 import palette from "../../styles/palette";
 import HeaderAuths from "./HeaderAuths";
 
@@ -182,7 +182,7 @@ const Header: React.FC = () => {
         <ul className="header-list-main-menu">
           <li>
             <div>
-              <SearchIcon />
+              <Search />
             </div>
           </li>
           <li>

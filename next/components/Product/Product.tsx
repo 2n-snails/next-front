@@ -7,10 +7,15 @@ const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 4px;
     box-shadow:rgb(0 0 0 / 4%) 0px 4px 16px 0px;
-    overflow: hidden;
+    border-radius: 4px;
     
+    overflow: hidden;
+
+    &:hover {
+      box-shadow:rgb(0 0 0 / 34%) 0px 4px 16px 0px;
+      transition: box-shadow 0.25s ease-in 0.25s;
+    }
     .product_main_items{
         #product_image img{
           width : 100%;
@@ -26,6 +31,8 @@ const ProductContainer = styled.div`
         flex-direction: column;
         align-items: center;
         
+        
+
         /* 2줄 넘어가면 ... 표시 처리하기 */
         .product_title{
           display: flex;
@@ -126,7 +133,7 @@ const ProductUserInfo = styled.div`
       display: flex;
       align-items: center;
       font-size: 0.8rem;
-
+      
       svg{
         margin-right: 0.5rem;
       }
@@ -175,52 +182,52 @@ const Product: React.FC<IProps> = ({ data }) => {
 
   return (
     <ProductContainer>
-      {/* 상품 이미지 */}
-      <div className="product_main_items">
-        <figure id="product_image">
-          <img src={data.Images[0].src} alt="상품 이미지" />
-        </figure>
-      </div>
 
-      {/* 상품 정보 */}
-      <div className="product_main_items_info">
-        {/* 상품 제목 */}
-        <div className="product_title">
-          <h1>{data.productTitle}</h1>
-        </div>
-        {/* 상품내용 */}
-        <div className="product_content">
-          <div className="product_content_p">
-            <p>{data.productContent}</p>
+      <Link href={`/product/detail/${data.productNo}`}>
+        <a href="#">
+          {/* 상품 이미지 */}
+          <div className="product_main_items">
+            <figure id="product_image">
+              <img src={data.Images[0].src} alt="상품 이미지" />
+            </figure>
           </div>
-          {/* 상품 업로드 날짜, 댓글 수*/}
-          <div className="product_date_coments">
-            <p>{datefunction(data.productUploadDate)}</p>
-            <span>{data.Comments.length}개의 댓글</span>
+
+          {/* 상품 정보 */}
+          <div className="product_main_items_info">
+            {/* 상품 제목 */}
+            <div className="product_title">
+              <h1>{data.productTitle}</h1>
+            </div>
+            {/* 상품내용 */}
+            <div className="product_content">
+              <div className="product_content_p">
+                <p>{data.productContent}</p>
+              </div>
+              {/* 상품 업로드 날짜, 댓글 수*/}
+              <div className="product_date_coments">
+                <p>{datefunction(data.productUploadDate)}</p>
+                <span>{data.Comments.length}개의 댓글</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-      </div>
-
-      {/* 상품 사용자 정보 */}
-      <ProductUserInfo>
-        {/* 사용자 프로필 */}
-        <Link href="#">
-          <a href="#">
+          {/* 상품 사용자 정보 */}
+          <ProductUserInfo>
+            {/* 사용자 프로필 */}
             <figure id="product_user_img">
               <img src={data.User.src} alt="유저 이미지" />
             </figure>
             {/* 사용자 이름 */}
             <span className="product_user_name">{data.User.nickname}</span>
-          </a>
-        </Link>
-        {/* 하트 표시 */}
-        <div className="product_user_info_like">
-          <Love className="love_icon" />
-          {data.productLike}
-        </div>
+            {/* 하트 표시 */}
+            <div className="product_user_info_like">
+              <Love className="love_icon" />
+              {data.productLike}
+            </div>
 
-      </ProductUserInfo>
+          </ProductUserInfo>
+        </a>
+      </Link>
     </ProductContainer>
   );
 };
