@@ -3,13 +3,14 @@ import styled, { css } from "styled-components";
 
 // 일반 selectbox
 const normalSelectStyle = css`
-    width: 100%;
-    height: 46px;
 
     select{
-        width: 100%;
-        height: 100%;
         background-color: #fff;
+        border-radius : 4px;
+        box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px;
+        padding: 0.3rem;
+        border: none;
+        color : rgb(73, 80, 87);
     }
 `;
 

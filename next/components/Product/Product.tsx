@@ -1,13 +1,15 @@
-import { date } from "faker/locale/zh_TW";
+import Link from "next/link";
 import React, { useCallback, useMemo } from "react";
 import styled from "styled-components";
+import Love from "../../public/static/svg/love.svg";
 
 const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    
-    border :1px solid grey;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow:rgb(0 0 0 / 4%) 0px 4px 16px 0px;
+    overflow: hidden;
     
     .product_main_items{
         #product_image img{
@@ -19,39 +21,69 @@ const ProductContainer = styled.div`
 
     .product_main_items_info{
         display : flex;
+        padding : 1rem;
+        width: 100%;
         flex-direction: column;
         align-items: center;
         
         /* 2줄 넘어가면 ... 표시 처리하기 */
-        .product_title h1{
-          text-align: center;
-          padding : 1rem 0;
-          font-size: 16px;
-          font-weight: bold;
-          width: 250px;
-         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        .product_title{
+          display: flex;
+
+          h1{
+              text-align: center;
+              padding : 1rem 0;
+              font-size: 16px;
+              font-weight: bold;
+              width: 250px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+          }
         }
+      
+        .product_content{
+          .product_content_p{
 
-        .product_content p{
-          display: block;
-          text-align: left;
-          padding: 1rem;
-          font-size: 15px;
-          width: 250px;
-          
-          
-          /* 라인 설정 6줄 부터 ... 표시 */
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-line-clamp: 6;
-          -webkit-box-orient: vertical;
+              p{
+                height: 3.9375rem;
+              
+              /* 라인 설정 3줄 부터 ... 표시 */
+              /* 높이 설정 */
+              line-height: 1.5;
+              color : rgb(73, 80, 87);
 
-          /* 높이 설정 */
-          line-height: 1.5em;
-          max-height: 10em;
+              margin: 0px 0px 1.5rem;
+              word-break: break-word;
+              overflow-wrap: break-word;
+              font-size: 0.875rem;
+              line-height: 1.5;
+              height: 3.9375rem;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              color: rgb(73, 80, 87);
+
+            }
+
+          } 
+
+             .product_date_coments{
+              display: flex;
+              justify-content: flex-start;
+              width: 100%;
+              font-size : 14px;
+              color : rgb(134, 142, 150);
+
+              p,span{
+                padding : 0.5rem 0 0 0;
+            }
+            span {
+              padding-left : 0.5rem;
+            }
+        }
 
         }
     }
@@ -61,20 +93,53 @@ const ProductContainer = styled.div`
 
 const ProductUserInfo = styled.div`
     display: flex;
+    line-height: 1.5;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0 0.625rem 0.6rem 0.625rem;
+    border : 1px solid rgb(248, 249, 250);
     width: 100%;
-    height: 100px;
-    border : 1px solid grey;
 
-    #product_user_info img{
-      width: 30px;
-      height: 30px;
+    a{
+      display: flex;
+      align-items: center;
     }
+    
+    .product_user_name{
+      font-size: 14px;
+      color :rgb(52, 58, 64)
+    }
+
+    #product_user_img img{
+      display: block;
+      object-fit: cover;
+      width: 2rem;
+      height: 2rem;
+      display: block;
+      border-radius: 50%;
+      margin-top: 5px;
+      margin-right: 0.5rem;
+    }
+
+
+    .product_user_info_like{
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+
+      svg{
+        margin-right: 0.5rem;
+      }
+    }
+    
+  
 `;
 
 interface IProps{
     data: object;
 }
 const Product: React.FC<IProps> = ({ data }) => {
+  // 날짜 계산
   function datefunction(asd) {
     const year = asd.split("-")[0];
     const month = asd.split("-")[1];
@@ -85,16 +150,25 @@ const Product: React.FC<IProps> = ({ data }) => {
 
     const postRealDate = presentDate.getTime() - postDate.getTime();
 
-    console.log(postRealDate);
+    const dayResult = 1000 * 60 * 60 * 24;
+    const monthResult = dayResult * 30;
+    const yearResult = monthResult * 12;
 
-    const postRealDay = postRealDate / (1000 * 3600 * 24);
+    // 일수차이
+    const finalDay = Math.ceil(postRealDate / dayResult);
+    // 월수차이
+    const finalMonth = Math.ceil(postRealDate / monthResult);
+    // 년도차이
+    const finalYear = Math.ceil(postRealDate / yearResult);
 
-    // 월
-    console.log(postRealDay * 30);
-    //  년
-    console.log(postRealDay * 30 * 12);
-
-    return postRealDay;
+    // 년이 있으면 약 ~ 년으로 출력
+    if (finalYear > 0) {
+      return `${finalYear}년 전`;
+    }
+    if (finalMonth > 0) {
+      return `${finalMonth}개월 전`;
+    }
+    return `${finalDay}일 전`;
   }
 
   console.log(data);
@@ -116,28 +190,36 @@ const Product: React.FC<IProps> = ({ data }) => {
         </div>
         {/* 상품내용 */}
         <div className="product_content">
-          <p>{data.productContent}</p>
+          <div className="product_content_p">
+            <p>{data.productContent}</p>
+          </div>
+          {/* 상품 업로드 날짜, 댓글 수*/}
+          <div className="product_date_coments">
+            <p>{datefunction(data.productUploadDate)}</p>
+            <span>{data.Comments.length}개의 댓글</span>
+          </div>
         </div>
-        {/* 상품 업로드 날짜 */}
-        <div>
-          <p>{datefunction(data.productUploadDate)}</p>
-          <span>{data.Comments.length}개의 댓글</span>
-        </div>
+
       </div>
 
       {/* 상품 사용자 정보 */}
       <ProductUserInfo>
-        <div>
-          <figure id="product_user_info">
-            <img src={data.User.src} alt="유저 이미지" />
-          </figure>
-        </div>
-        <div className="product_user_info_title">
-          <h3>{data.User.nickname}</h3>
-        </div>
+        {/* 사용자 프로필 */}
+        <Link href="#">
+          <a href="#">
+            <figure id="product_user_img">
+              <img src={data.User.src} alt="유저 이미지" />
+            </figure>
+            {/* 사용자 이름 */}
+            <span className="product_user_name">{data.User.nickname}</span>
+          </a>
+        </Link>
+        {/* 하트 표시 */}
         <div className="product_user_info_like">
-          <figure />
+          <Love className="love_icon" />
+          {data.productLike}
         </div>
+
       </ProductUserInfo>
     </ProductContainer>
   );

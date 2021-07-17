@@ -26,6 +26,7 @@ const init = {
     productView: 1,
     productState: false,
     productUploadDate: "2018-01-01",
+    productLike: 13,
     //이미지 정보
     Images: [{
       id: shortId.generate(),
@@ -48,6 +49,7 @@ init.productsList = init.productsList.concat(
     productPrice: faker.commerce.price(),
     productView: faker.commerce.price(),
     productContent: faker.lorem.sentences(),
+    productLike: faker.random.number(100),
     User: {
       productUserNo: shortId.generate(),
       nickname: faker.name.findName(),
