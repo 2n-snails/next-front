@@ -6,6 +6,7 @@ import palette from "../../styles/palette";
 import HeaderAuths from "./HeaderAuths";
 
 const Container = styled.div`
+
     position: sticky;
     top : 0;
     width : 100%;
@@ -21,9 +22,11 @@ const Container = styled.div`
 
 
     .header-logo{
-
+      
     & .header-logo-wrapper{
+      
         display: flex;
+        justify-self: center;
         align-items: center;
         overflow: hidden;
         

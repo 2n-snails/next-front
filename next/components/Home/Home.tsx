@@ -6,8 +6,6 @@ import SelectBox from "../common/SelectBox";
 import { productOptionList } from "../../lib/data/staticData";
 
 const MainContainer = styled.div`
-
-
   @media(max-width: 1440px){
     width: 1024px;
   }
@@ -26,6 +24,39 @@ const MainContainer = styled.div`
     padding : 1.5rem 0;
   }
 `;
+
+const FaqContainer = styled.div`
+
+  .faq_main_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 5%;
+    bottom : 50%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(rgb(204 234 255) 0%,rgb(52 170 255) 100%,rgb(207 230 255) 100%);
+    position: fixed;
+    border-radius: 50%;
+    box-shadow : box-shadow rgb(0 0 0 / 15%) 0px 4px 6px 0px;
+    cursor: pointer;
+
+    &:before{
+    content: '';
+    width: 34px;
+    height: 34px;
+    background-image : url("https://cdn.channel.io/plugin/images/ch-new-launcher-icon-68.png");
+    background-size : 136px;
+    background-position : 0 0;
+
+
+    }
+  }
+
+  
+
+`;
+
 const HomeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -45,6 +76,7 @@ const Home: React.FC = () => {
 
   return (
     <MainContainer>
+      {/* select box */}
       <div className="main_select_box">
         <SelectBox
           type="normal"
@@ -54,8 +86,13 @@ const Home: React.FC = () => {
           onChange={onChangeProductOption}
         />
       </div>
-      <HomeContainer>
 
+      {/* 문의하기 버튼 */}
+      <FaqContainer>
+        <div className="faq_main_content" />
+      </FaqContainer>
+
+      <HomeContainer>
         {productsList.map((data:any) => (
           <>
             <Products data={data} />
