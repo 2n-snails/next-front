@@ -20,6 +20,8 @@ a{
     text-decoration : none;
     color : ${palette.black}   
 }
+
+
 `;
 
 const GlobalStyle = createGlobalStyle`
