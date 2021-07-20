@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import SearchIcon from "../../public/static/svg/search.svg";
+import Search from "../../public/static/svg/search.svg";
 import palette from "../../styles/palette";
 import HeaderAuths from "./HeaderAuths";
 
 const Container = styled.div`
+
     position: sticky;
     top : 0;
     width : 100%;
@@ -21,9 +22,11 @@ const Container = styled.div`
 
 
     .header-logo{
-
+      
     & .header-logo-wrapper{
+      
         display: flex;
+        justify-self: center;
         align-items: center;
         overflow: hidden;
         
@@ -179,7 +182,7 @@ const Header: React.FC = () => {
         <ul className="header-list-main-menu">
           <li>
             <div>
-              <SearchIcon />
+              <Search />
             </div>
           </li>
           <li>

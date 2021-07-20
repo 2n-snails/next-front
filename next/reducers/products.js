@@ -13,40 +13,59 @@ const init = {
   productsList: [{
     //상품 작정자 정보
     User: {
-      id: 1,
-      nickname: "혜민"
+      productUserNo: 1,
+      nickname: "혜민",
+      src: faker.image.image(),
     },
-    //상품 id
-    id: 1,
+    //상품 상품 id
+    productNo: 1,
+    productTitle: "폴로 테스트 데이타",
     //상품 내용
-    content: "게시글 내용 테스트입니당아아아아아 당근마켓 번개장터",
+    productContent: "게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입 게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입게시글 내용 테스트입니당아아아아아 당근마켓 번개장터입",
+    productPrice: 10000,
+    productView: 1,
+    productState: false,
+    productUploadDate: "2018-01-01",
+    productLike: 13,
     //이미지 정보
     Images: [{
       id: shortId.generate(),
-      src: faker.image
+      src: faker.image.image(),
     }],
     //댓글
-    Comments: [{}],
+    Comments: [{
+      id: shortId.generate(),
+      userName: "혜민"
+    }],
   }]
 };
 
 //상품 더미데이터 생성
 init.productsList = init.productsList.concat(
   Array(20).fill().map(() => ({
-    id: shortId.generate(),
-    User: {
-      id: shortId.generate(),
-      nickname: faker.name.findName(),
-    },
+    productNo: shortId.generate(),
     content: faker.lorem.paragraph(),
+    productTitle: faker.name.title(),
+    productPrice: faker.commerce.price(),
+    productView: faker.commerce.price(),
+    productContent: faker.lorem.sentences(),
+    productLike: faker.random.number(100),
+    User: {
+      productUserNo: shortId.generate(),
+      nickname: faker.name.findName(),
+      src: faker.image.image(),
+    },
     Images: [{
-      src: faker.image.image
-    }]
+      id: shortId.generate(),
+      src: faker.image.image()
+    }],
+    Comments: [{
+      id: shortId.generate(),
+      userName: faker.name.findName()
+    }],
+    productUploadDate: "2018-01-05",
   }))
 );
-// init.productsList = init.productsList.concat(
-
-// );
 
 const products = (state = init, action) => produce(state, (draft) => {
   switch (action.type) {

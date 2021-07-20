@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import palette from "../../styles/palette";
 
 const Container = styled.button`
@@ -12,16 +12,16 @@ const Container = styled.button`
     font-weight: 800;
     cursor: pointer;
     outline: none;
-    background: ${palette.bittersweet};
-
+    ${(props) => (props.color ? css`background : ${props.color};` : css`background:${palette.bittersweet}`)}
 `;
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    children: React.ReactNode;
+  children?: React.ReactNode;
+  text: string;
 }
-const Button:React.FC<IProps> = ({ children, ...props }) => {
+const Button:React.FC<IProps> = ({ children, text, color, ...props }) => {
   return (
-    <Container {...props}>{children}</Container>
+    <Container color={color} {...props}>{text}</Container>
   );
 };
 
