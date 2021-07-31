@@ -5,7 +5,7 @@ import {
   LOAD_PRODUCTS_ERROR,
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
-} from "../action/products";
+} from "@/action/products";
 
 const init = {
   loadProductsLoading: false,

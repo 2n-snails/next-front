@@ -18,17 +18,20 @@
     "downlevelIteration": true,
     "baseUrl": "./",
     "paths": {
-      "@/pages/*": ["pages/*"],
-      "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/containers/*": ["containers/*"],
-      "@/assets/*": ["public/static/*"],
-      "@/store/*": ["store/*"],
-      "@/sagas/*": ["sagas/*"],
-      "@/reducers/*": ["reducers/*"],
       "@/action/*": ["action/*"],
+      "@/components/*": ["components/*"],
+      "@/containers/*": ["containers/*"],
+      "@/data/*": ["data/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/lib/*": ["lib/*"],
+      "@/pages/*": ["pages/*"],
+      "@/assets/*": ["public/static/*"],
+      "@/reducers/*": ["reducers/*"],
+      "@/sagas/*": ["sagas/*"],
+      "@/store/*": ["store/*"],
+      "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": [

@@ -8,20 +8,20 @@
       {
         "root": ["./"],
         "alias": {
-          "@/pages": "./pages",
-          "@/components": "./components",
-          "@/styles": "./styles",
-          "@/containers": "./containers",
-          "@/assets": "./public/static",
-          "@/store": "./store",
-          "@/sagas": "./sagas",
-          "@/reducers": "./reducers",
           "@/action": "./action",
-          "@/types": "./types",
+          "@/components": "./components",
+          "@/containers": "./containers",
+          "@/data": "./data",
           "@/hooks": "./hooks",
-          "@components": "./components",
-          "@icons": "./assets/icons",
-          "@views": "./views"
+          "@/lib*": "./lib",
+          "@/pages*": "./pages*",
+          "@/assets": "./public/static",
+          "@/reducers": "./reducers",
+          "@/sagas": "./sagas",
+          "@/store": "./store",
+          "@/styles": "./styles",
+          "@/types": "./types",
+          "@/utils": "./utils"
         }
       }
     ]

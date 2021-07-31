@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { DateFormat } from "utils/format_date";
-import Love from "../../public/static/svg/love.svg";
+import Love from "@/assets/svg/love.svg";
 
 const ProductContainer = styled.div`
   display: flex;

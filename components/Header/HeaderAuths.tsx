@@ -1,6 +1,6 @@
 import useModal from "@/hooks/useModal";
 import React from "react";
-import AuthModal from "./auth/AuthModal";
+import AuthModal from "@/components/Header/auth/AuthModal";
 
 const HeaderAuths: React.FC = () => {
   const { openModal, ModalPortal, closeModal } = useModal();

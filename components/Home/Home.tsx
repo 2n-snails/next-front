@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Products from "../Product/Product";
-import { productOptionList } from "../../lib/data/staticData";
-import { SelectBox } from "../common/SelectBox";
+import Products from "@/components/Product/Product";
+import { productOptionList } from "@/lib/data/staticData";
+import { SelectBox } from "@/components/common/SelectBox";
 
 const MainContainer = styled.div`
   @media (max-width: 1440px) {

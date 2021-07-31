@@ -1,6 +1,5 @@
 import React from "react";
-// import LoginModal from "./LoginModal";
-import SignUpModal from "./SignUpModal";
+import SignUpModal from "@/components/Header/auth/SignUpModal";
 
 interface IProps {
   closeModal: () => void;
