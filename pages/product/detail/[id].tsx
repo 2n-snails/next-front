@@ -1,5 +1,4 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Link from "next/link";
@@ -14,18 +13,14 @@ import Clock from "@/assets/svg/clock.svg";
 
 import { DateFormat } from "utils/format_date";
 import ProductDetailContent from "@/components/Product/ProductDetailContent";
+import React, { useState } from "react";
+
+import ProductDetailImage from "@/components/Image/ProductDetailImage";
 
 const ProductDetailContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 1440px) {
-    width: 1024px;
-  }
-
-  @media (max-width: 1919px) {
-    width: 1376px;
-  }
+  padding: 0 10rem;
 
   margin-left: auto;
   margin-right: auto;
@@ -133,22 +128,27 @@ const ProductDetailContainer = styled.div`
 interface IProps {}
 
 const ProductDetail: React.FC<IProps> = () => {
+  // 이미지 캐러셀을 위한 값 저장 번호 index 값 기억
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const { query } = useRouter();
 
   const productDetail = useSelector(
     (state: any) => state.products.productsList,
   );
+
   const detailData = productDetail.filter((data: any) => {
     return query.id === data.productNo?.toString();
   });
+  console.log("detailData", detailData);
 
   return (
     <ProductDetailContainer>
-      {/* 이미지 캐러셀 영영 */}
       <div className="image_total_info">
         {detailData.map((data) => (
           <>
-            <img src={data.Images[0].src} alt="상품상세이미지" />
+            {/* 이미지 캐러셀 영영 */}
+            <ProductDetailImage images={data.Images} />
           </>
         ))}
       </div>
@@ -168,11 +168,9 @@ const ProductDetail: React.FC<IProps> = () => {
             {/* 상품 버튼 */}
             <div className="product_detail_info_main_btn">
               <div className="zzim_btn">
-                <ButtonComponent
-                  name="찜하기"
-                  type="button"
-                  color="#2fa0ead9"
-                />
+                <ButtonComponent name="찜하기" type="button" color="#2fa0ead9">
+                  찜하기
+                </ButtonComponent>
                 <Zzim className="zzim_btn_svg" />
               </div>
 
@@ -181,7 +179,9 @@ const ProductDetail: React.FC<IProps> = () => {
                   name="연락하기"
                   type="button"
                   color="#9bd00ed9"
-                />
+                >
+                  연락하기
+                </ButtonComponent>
                 <Call className="call_btn_svg" />
               </div>
               <div className="siren_btn">
@@ -189,7 +189,9 @@ const ProductDetail: React.FC<IProps> = () => {
                   name="신고하기"
                   type="button"
                   color="#f8d6d6b5"
-                />
+                >
+                  신고하기
+                </ButtonComponent>
                 <Siren className="siren_btn_svg" />
               </div>
             </div>
@@ -218,7 +220,11 @@ const ProductDetail: React.FC<IProps> = () => {
               </div>
               <div>
                 <Clock />
-                <p>{DateFormat(data.productUploadDate)}</p>
+                <p>
+                  {data &&
+                    data.productUploadDate &&
+                    DateFormat(data.productUploadDate)}
+                </p>
               </div>
             </div>
           </>

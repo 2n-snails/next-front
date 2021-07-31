@@ -136,6 +136,7 @@ interface IProps {
   data: any;
 }
 const Product: React.FC<IProps> = ({ data }) => {
+  console.log(data);
   return (
     <ProductContainer>
       <Link href={`/product/detail/${data.productNo}`}>
@@ -160,8 +161,12 @@ const Product: React.FC<IProps> = ({ data }) => {
               </div>
               {/* 상품 업로드 날짜, 댓글 수*/}
               <div className="product_date_coments">
-                <p>{DateFormat(data.productUploadDate)}</p>
-                <span>{data.Comments.length}개의 댓글</span>
+                <p>
+                  {data &&
+                    data.productUploadDate &&
+                    DateFormat(data.productUploadDate)}
+                </p>
+                <span>{data.Comments?.length}개의 댓글</span>
               </div>
             </div>
           </div>
