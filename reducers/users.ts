@@ -21,9 +21,8 @@ const init: UserStateProps = {
   loadUsersError: null,
 };
 
-const users = (state = init, action: userAction) =>
+const users = (state = init, action) =>
   produce(state, (draft) => {
-    console.error("draft 이거 뭐에요? : ", draft);
     switch (action) {
       case LOAD_USERS_REQUEST:
         break;

@@ -1,11 +1,13 @@
 import produce from "immer";
 import shortId from "shortid";
-import faker from "faker";
+import Faker from "faker";
 import {
   LOAD_PRODUCTS_ERROR,
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
 } from "@/action/products";
+
+Faker.locale = "ko";
 
 const init = {
   loadProductsLoading: false,
@@ -15,24 +17,32 @@ const init = {
   //상품 list
   productsList: [
     {
+      productNo: shortId.generate(),
+      productPrice: Faker.random.number(99999999),
+
+      productUploadDate: "2020-05-04",
       //상품 작정자 정보
       User: {
         id: 1,
-        nickname: "혜민",
+        nickname: Faker.name.findName(),
+        src: Faker.image.image(),
       },
-      //상품 id
-      id: 1,
       //상품 내용
-      content: "게시글 내용 테스트입니당아아아아아 당근마켓 번개장터",
+      productContent: "게시글 내용 테스트입니당아아아아아 당근마켓 번개장터",
       //이미지 정보
       Images: [
         {
           id: shortId.generate(),
-          src: faker.image,
+          src: Faker.image.image(),
         },
       ],
       //댓글
-      Comments: [{}],
+      Comments: [
+        {
+          id: shortId.generate(),
+          content: "댓글달러 왔습니다 상품 얼마인가요",
+        },
+      ],
     },
   ],
 };
@@ -42,15 +52,31 @@ init.productsList = init.productsList.concat(
   Array(20)
     .fill()
     .map(() => ({
-      id: shortId.generate(),
+      productNo: shortId.generate(),
+      productPrice: Faker.random.number(99999999),
+      // 여기서 date 처리를 해줘여하는데
+      productUploadDate: "2020-05-04",
       User: {
         id: shortId.generate(),
-        nickname: faker.name.findName(),
+        nickname: Faker.name.findName(),
+        src: Faker.image.image(),
       },
-      content: faker.lorem.paragraph(),
+      productContent: Faker.lorem.paragraph(),
       Images: [
         {
-          src: faker.image.image,
+          id: shortId.generate(),
+          src: Faker.image.image(),
+        },
+        {
+          id: shortId.generate(),
+          src: Faker.image.image(),
+        },
+      ],
+      //댓글
+      Comments: [
+        {
+          id: shortId.generate(),
+          content: "댓글달러 왔습니다 상품 얼마인가요",
         },
       ],
     })),

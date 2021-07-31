@@ -10,5 +10,5 @@ export const Button = styled.button`
   font-weight: 800;
   cursor: pointer;
   outline: none;
-  background: ${({ theme }) => theme.gray_f7};
+  background: ${(props) => props.color};
 `;

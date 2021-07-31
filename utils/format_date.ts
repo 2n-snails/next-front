@@ -1,8 +1,10 @@
 // 날짜 계산
 export const DateFormat = (oldDate: any): string => {
-  const year = oldDate.split("-")[0];
-  const month = oldDate.split("-")[1];
-  const day = oldDate.split("-")[2];
+  const receiveDate = oldDate.toString();
+
+  const year = receiveDate.split("-")[0];
+  const month = receiveDate.split("-")[1];
+  const day = receiveDate.split("-")[2];
 
   const postDate = new Date(year, month, day);
   const presentDate = new Date();
