@@ -5,12 +5,12 @@ import styled from "styled-components";
 import Link from "next/link";
 import ButtonComponent from "@/components/common/Button";
 import Zzim from "@/assets/svg/zzim.svg";
-import Call from "@/assets/public/static/svg/call.svg";
-import Siren from "@/assets/public/static/svg/siren.svg";
+import Call from "@/assets/svg/call.svg";
+import Siren from "@/assets/svg/siren.svg";
 
-import Love from "@/assets/public/static/svg/love.svg";
-import WatchView from "@/assets/public/static/svg/WatchView.svg";
-import Clock from "@/assets/public/static/svg/clock.svg";
+import Love from "@/assets/svg/love.svg";
+import WatchView from "@/assets/svg/WatchView.svg";
+import Clock from "@/assets/svg/clock.svg";
 
 import { DateFormat } from "utils/format_date";
 import ProductDetailContent from "@/components/Product/ProductDetailContent";
@@ -138,9 +138,9 @@ const ProductDetail: React.FC<IProps> = () => {
   const productDetail = useSelector(
     (state: any) => state.products.productsList,
   );
-  const detailData = productDetail.filter(
-    (data) => query.id === data.productNo.toString(),
-  );
+  const detailData = productDetail.filter((data: any) => {
+    return query.id === data.productNo?.toString();
+  });
 
   return (
     <ProductDetailContainer>

@@ -12,7 +12,7 @@ const ProductDetailContent: React.FC<IProps> = ({ data }) => {
     // 상품 정보 출력
     <ProductDetailContentContainer>
       <div>
-        <span>{data[0].productContent}</span>
+        <span>{data[0]?.productContent}</span>
       </div>
     </ProductDetailContentContainer>
   );
