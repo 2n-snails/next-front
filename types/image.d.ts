@@ -1,3 +1,10 @@
+type StaticImageData = {
+  src: string;
+  height: number;
+  width: number;
+  placeholder?: string;
+};
+
 declare module "*.svg" {
   import React = require("react");
 
@@ -5,17 +12,37 @@ declare module "*.svg" {
   export default ReactComponent;
 }
 
-declare module "*.jpg" {
-  const content: string;
-  export default content;
-}
-
 declare module "*.png" {
-  const content: string;
+  const content: StaticImageData;
   export default content;
 }
 
-declare module "*.json" {
-  const content: string;
+declare module "*.jpg" {
+  const content: StaticImageData;
+  export default content;
+}
+
+declare module "*.jpeg" {
+  const content: StaticImageData;
+  export default content;
+}
+
+declare module "*.gif" {
+  const content: StaticImageData;
+  export default content;
+}
+
+declare module "*.webp" {
+  const content: StaticImageData;
+  export default content;
+}
+
+declare module "*.ico" {
+  const content: StaticImageData;
+  export default content;
+}
+
+declare module "*.bmp" {
+  const content: StaticImageData;
   export default content;
 }
