@@ -136,8 +136,6 @@ interface IProps {
   data: any;
 }
 const Product: React.FC<IProps> = ({ data }) => {
-
-
   return (
     <ProductContainer>
       <Link href={`/product/detail/${data.productNo}`}>
