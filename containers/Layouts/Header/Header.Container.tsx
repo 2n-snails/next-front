@@ -11,8 +11,9 @@ interface HeaderContainerProps {
 
 const HeaderContainer: React.FC<HeaderContainerProps> = ({
   isLoggedIn,
-  setIsLoggedIn,
+  // setIsLoggedIn,
 }) => {
+  // console.log(setIsLoggedIn);
   return (
     <>
       <HeaderSection>

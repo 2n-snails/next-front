@@ -4,7 +4,7 @@ interface IProps {
   data: object;
   index?: number;
 }
-const Product: React.FC<IProps> = ({ data }) => {
+const Product: React.FC<IProps> = () => {
   return (
     <>
       <div>asd</div>
