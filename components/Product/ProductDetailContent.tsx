@@ -6,7 +6,7 @@ const ProductDetailContentContainer = styled.div`
   border-bottom: 1px solid #808080;
 
   .product_detaill_content {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     line-height: 1.5em;
     color: #343131;
     font-size: 16px;

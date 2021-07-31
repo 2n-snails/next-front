@@ -13,9 +13,10 @@ import Clock from "@/assets/svg/clock.svg";
 
 import { DateFormat } from "utils/format_date";
 import ProductDetailContent from "@/components/Product/ProductDetailContent";
-import React, { useState } from "react";
+import React from "react";
 
 import ProductDetailImage from "@/components/Image/ProductDetailImage";
+import ProductDetailComment from "@/components/Product/ProductDetailComment";
 
 const ProductDetailContainer = styled.div`
   display: flex;
@@ -138,7 +139,6 @@ const ProductDetail: React.FC<IProps> = () => {
   const detailData = productDetail.filter((data: any) => {
     return query.id === data.productNo?.toString();
   });
-  console.log("detailData", detailData);
 
   return (
     <ProductDetailContainer>
@@ -198,6 +198,7 @@ const ProductDetail: React.FC<IProps> = () => {
             </div>
 
             {/* 사용자 정보 */}
+            {/* 나중에 사용자 정보 컴포넌트 리팩토링 통일하기 */}
             <Link href="#">
               <a href="#">
                 <div className="product_detail_user_info">
@@ -233,7 +234,8 @@ const ProductDetail: React.FC<IProps> = () => {
       </div>
       {/* 상세 내용 */}
       <ProductDetailContent data={detailData} />
-      {/* 상품문의 */}
+      {/* 상품 댓글*/}
+      <ProductDetailComment comments={detailData[0].Comments} />
     </ProductDetailContainer>
   );
 };
