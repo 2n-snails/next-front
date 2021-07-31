@@ -128,9 +128,6 @@ const ProductDetailContainer = styled.div`
 interface IProps {}
 
 const ProductDetail: React.FC<IProps> = () => {
-  // 이미지 캐러셀을 위한 값 저장 번호 index 값 기억
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const { query } = useRouter();
 
   const productDetail = useSelector(

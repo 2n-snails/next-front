@@ -47,6 +47,11 @@ const init = {
   ],
 };
 
+const commentLength = Number((Math.random() * 50).toFixed(0));
+const commentsArray = Array(commentLength)
+  .fill()
+  .map(() => ({ id: shortId.generate(), content: Faker.lorem.sentence() }));
+
 //상품 더미데이터 생성
 init.productsList = init.productsList.concat(
   Array(20)
@@ -73,12 +78,7 @@ init.productsList = init.productsList.concat(
         },
       ],
       //댓글
-      Comments: [
-        {
-          id: shortId.generate(),
-          content: "댓글달러 왔습니다 상품 얼마인가요",
-        },
-      ],
+      Comments: commentsArray,
     })),
 );
 // init.productsList = init.productsList.concat(
