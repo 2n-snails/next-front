@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
+    "types": ["@types/node"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "./",
     "typeRoots": ["node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "downlevelIteration": true,
+    "baseUrl": "./",
     "paths": {
       "@/pages/*": ["pages/*"],
       "@/components/*": ["components/*"],
