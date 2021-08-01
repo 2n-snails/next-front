@@ -13,9 +13,10 @@ import Clock from "@/assets/svg/clock.svg";
 
 import { DateFormat } from "utils/format_date";
 import ProductDetailContent from "@/components/Product/ProductDetailContent";
-import React, { useState } from "react";
+import React from "react";
 
 import ProductDetailImage from "@/components/Image/ProductDetailImage";
+import ProductDetailComment from "@/components/Product/ProductDetailComment";
 
 const ProductDetailContainer = styled.div`
   display: flex;
@@ -50,45 +51,46 @@ const ProductDetailContainer = styled.div`
       }
 
       .product_detail_info_main_title_price {
-        font-size: 2.5rem;
+        padding: 3.5rem 1rem;
+        font-size: 2rem;
+        color: #343131;
+
+        span {
+          padding: 0 1rem;
+          font-size: 1.5rem;
+        }
       }
     }
 
     .product_detail_info_main_btn {
+      position: relative;
       display: flex;
       flex-direction: row;
 
-      .zzim_btn {
-        width: 33.3333%;
-        position: relative;
-        padding: 0 1rem;
-        .zzim_btn_svg {
-          position: absolute;
-          top: 10px;
-          left: 150px;
-        }
-      }
-
-      .call_btn {
-        position: relative;
-        width: 33.3333%;
-        padding: 0 1rem;
-        .call_btn_svg {
-          position: absolute;
-          top: 10px;
-          left: 150px;
-        }
-      }
-
+      .zzim_btn,
+      .call_btn,
       .siren_btn {
-        position: relative;
-        width: 33.33333%;
+        width: 33.3333%;
         padding: 0 1rem;
-        .siren_btn_svg {
+
+        svg {
           position: absolute;
-          top: 10px;
-          left: 150px;
         }
+      }
+
+      .zzim_btn_svg {
+        top: 10px;
+        left: 60px;
+      }
+
+      .call_btn_svg {
+        top: 13px;
+        left: 290px;
+      }
+
+      .siren_btn_svg {
+        top: 10px;
+        left: 530px;
       }
     }
 
@@ -110,7 +112,7 @@ const ProductDetailContainer = styled.div`
         p {
           color: rgb(134, 142, 150);
           padding: 1rem;
-          font-size: 1.5rem;
+          font-size: 1rem;
         }
       }
     }
@@ -128,9 +130,6 @@ const ProductDetailContainer = styled.div`
 interface IProps {}
 
 const ProductDetail: React.FC<IProps> = () => {
-  // 이미지 캐러셀을 위한 값 저장 번호 index 값 기억
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const { query } = useRouter();
 
   const productDetail = useSelector(
@@ -140,7 +139,6 @@ const ProductDetail: React.FC<IProps> = () => {
   const detailData = productDetail.filter((data: any) => {
     return query.id === data.productNo?.toString();
   });
-  console.log("detailData", detailData);
 
   return (
     <ProductDetailContainer>
@@ -162,16 +160,19 @@ const ProductDetail: React.FC<IProps> = () => {
                 <p>{data.productTitle}</p>
               </div>
               <div className="product_detail_info_main_title_price">
-                <p>{data.productPrice.toLocaleString()}원</p>
+                <p>
+                  {data.productPrice.toLocaleString()}
+                  <span>원</span>
+                </p>
               </div>
             </div>
             {/* 상품 버튼 */}
             <div className="product_detail_info_main_btn">
               <div className="zzim_btn">
                 <ButtonComponent name="찜하기" type="button" color="#2fa0ead9">
-                  찜하기
+                  <p>찜하기</p>
+                  <Zzim className="zzim_btn_svg" />
                 </ButtonComponent>
-                <Zzim className="zzim_btn_svg" />
               </div>
 
               <div className="call_btn">
@@ -180,9 +181,9 @@ const ProductDetail: React.FC<IProps> = () => {
                   type="button"
                   color="#9bd00ed9"
                 >
-                  연락하기
+                  <p>연락하기</p>
+                  <Call className="call_btn_svg" />
                 </ButtonComponent>
-                <Call className="call_btn_svg" />
               </div>
               <div className="siren_btn">
                 <ButtonComponent
@@ -190,13 +191,14 @@ const ProductDetail: React.FC<IProps> = () => {
                   type="button"
                   color="#f8d6d6b5"
                 >
-                  신고하기
+                  <p>신고하기</p>
+                  <Siren className="siren_btn_svg" />
                 </ButtonComponent>
-                <Siren className="siren_btn_svg" />
               </div>
             </div>
 
             {/* 사용자 정보 */}
+            {/* 나중에 사용자 정보 컴포넌트 리팩토링 통일하기 */}
             <Link href="#">
               <a href="#">
                 <div className="product_detail_user_info">
@@ -230,7 +232,10 @@ const ProductDetail: React.FC<IProps> = () => {
           </>
         ))}
       </div>
+      {/* 상세 내용 */}
       <ProductDetailContent data={detailData} />
+      {/* 상품 댓글*/}
+      <ProductDetailComment comments={detailData[0].Comments} />
     </ProductDetailContainer>
   );
 };

@@ -39,6 +39,11 @@ const init = {
       //댓글
       Comments: [
         {
+          user: {
+            id: shortId.generate(),
+            nickname: Faker.name.findName(),
+            src: Faker.image.image(),
+          },
           id: shortId.generate(),
           content: "댓글달러 왔습니다 상품 얼마인가요",
         },
@@ -46,6 +51,19 @@ const init = {
     },
   ],
 };
+
+const commentLength = Number((Math.random() * 50).toFixed(0));
+const commentsArray = Array(commentLength)
+  .fill()
+  .map(() => ({
+    user: {
+      id: shortId.generate(),
+      src: Faker.image.image(),
+      nickname: Faker.name.findName(),
+    },
+    id: shortId.generate(),
+    content: Faker.lorem.sentence(),
+  }));
 
 //상품 더미데이터 생성
 init.productsList = init.productsList.concat(
@@ -58,7 +76,6 @@ init.productsList = init.productsList.concat(
       productUploadDate: "2020-05-04",
       User: {
         id: shortId.generate(),
-        nickname: Faker.name.findName(),
         src: Faker.image.image(),
       },
       productContent: Faker.lorem.paragraph(),
@@ -73,12 +90,7 @@ init.productsList = init.productsList.concat(
         },
       ],
       //댓글
-      Comments: [
-        {
-          id: shortId.generate(),
-          content: "댓글달러 왔습니다 상품 얼마인가요",
-        },
-      ],
+      Comments: commentsArray,
     })),
 );
 // init.productsList = init.productsList.concat(

@@ -1,48 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import GlobalStyle from "@/styles/GlobalStyle";
+import ImageZoom from "./ImageZoom";
 
-// 클래스 선택자
-const StyleSlider = styled(Slider)``;
+// 클래스 선택자 전역으로 선택된 slider 값을 바꾸기 위함
+const StyleSlider = styled(Slider)`
+  .slick-list {
+    width: 300px;
+  }
+  .slick-prev,
+  .slick-next {
+    background: grey;
+  }
+`;
+
+const ImgWrapper = styled.div`
+  & img {
+    width: 100%;
+    margin: 0 auto;
+  }
+`;
 
 const ProductDetailImage = ({ images }) => {
-  console.log("images", images);
-
   // 이미지 캐러셀을 위한 값 저장 번호 index 값 기억
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(false);
 
   // slick용 data 저장
-  const [slickData, setSlickData] = useState({
+  const slickData = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  });
+  };
 
-  const onClickZoom = () => {};
+  const onClickZoom = useCallback(() => {
+    setCurrentSlide((prev) => !prev);
+  }, []);
+
   return (
-    <>
-      {/* 여기서 이미지를 클릭하면 확대하는 식으로 보여주고 */}
-      {/* 첫 번째 페이지에서는 캐러셀이 가능하도록 출려고디야한다. */}
-      <Slider {...slickData}>
-        {images &&
-          images.map((img) => {
-            return (
-              <div key={img.id}>
-                <img
-                  src={img.src}
-                  alt="상세이미지"
-                  role="presentation"
-                  onClick={onClickZoom}
-                />
-              </div>
-            );
-          })}
-      </Slider>
-    </>
+    <StyleSlider {...slickData}>
+      {images.map((imgData) => (
+        <ImgWrapper>
+          <img
+            src={imgData.src}
+            alt="상세이미지"
+            role="presentation"
+            onClick={onClickZoom}
+          />
+          {/* 이미지를 클릭했을 경우 팝업 */}
+          {currentSlide && <ImageZoom />}
+        </ImgWrapper>
+      ))}
+    </StyleSlider>
   );
 };
 
