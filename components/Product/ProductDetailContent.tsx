@@ -1,6 +1,9 @@
 import { Button } from "@/styles/common/Button";
 import React from "react";
 import styled from "styled-components";
+import TrashIcon from "../../public/static/svg/trash2.svg";
+import EditIcon from "../../public/static/svg/edit.svg";
+import SirenIcon from "../../public/static/svg/siren.svg";
 
 const ProductDetailContentContainer = styled.div`
   border-bottom: 1px solid #808080;
@@ -16,8 +19,8 @@ const ProductDetailContentContainer = styled.div`
 const ProductDetailContentBtn = styled.div`
   float: right;
   button {
-    font-size: 13px;
-    width: 50%;
+    font-size: 14px;
+    width: 33.3333%;
   }
 `;
 interface IProps {
@@ -35,10 +38,13 @@ const ProductDetailContent: React.FC<IProps> = ({ data }) => {
       {/* 본인일 경우에만 가능하도록 */}
       <ProductDetailContentBtn>
         <Button color="white">
-          <p style={{ fontWeight: "normal", color: "#808080" }}>게시글 수정</p>
+          <EditIcon width="24px" height="24px" />
         </Button>
         <Button color="white">
-          <p style={{ fontWeight: "normal", color: "#808080" }}>게시글 삭제</p>
+          <TrashIcon width="24px" height="24px" />
+        </Button>
+        <Button color="white">
+          <SirenIcon />
         </Button>
       </ProductDetailContentBtn>
     </ProductDetailContentContainer>

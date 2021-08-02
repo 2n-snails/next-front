@@ -19,8 +19,8 @@ const init = {
     {
       productNo: shortId.generate(),
       productPrice: Faker.random.number(99999999),
-
       productUploadDate: "2020-05-04",
+      productLike: 10,
       //상품 작정자 정보
       User: {
         id: 1,
@@ -72,11 +72,13 @@ init.productsList = init.productsList.concat(
     .map(() => ({
       productNo: shortId.generate(),
       productPrice: Faker.random.number(99999999),
-      // 여기서 date 처리를 해줘여하는데
       productUploadDate: "2020-05-04",
+      // 상품 좋아요
+      productLike: Faker.random.number(1000),
       User: {
         id: shortId.generate(),
         src: Faker.image.image(),
+        nickname: Faker.name.findName(),
       },
       productContent: Faker.lorem.paragraph(),
       Images: [

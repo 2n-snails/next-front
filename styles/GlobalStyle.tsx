@@ -17,7 +17,7 @@ const globalStyle = css`
   }
 `;
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     ${globalStyle}
 `;
 
