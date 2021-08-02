@@ -6,14 +6,6 @@ import { productOptionList } from "@/lib/data/staticData";
 import { SelectBox } from "@/components/common/SelectBox";
 
 const MainContainer = styled.div`
-  @media (max-width: 1440px) {
-    width: 1024px;
-  }
-
-  @media (max-width: 1919px) {
-    width: 1376px;
-  }
-
   margin-left: auto;
   margin-right: auto;
 
@@ -60,6 +52,14 @@ const HomeContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
   row-gap: 3rem;
   column-gap: 1rem;
+
+  @media ${(props) => props.theme.tablet} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Home: React.FC = () => {

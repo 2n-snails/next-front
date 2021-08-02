@@ -24,9 +24,15 @@ const CommentsInfo = styled.div`
 
     img {
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
       object-fit: cover;
+    }
+
+    p {
+      font-size: 1em;
+      padding: 0.4rem;
+      letter-spacing: 0.1rem;
     }
   }
 

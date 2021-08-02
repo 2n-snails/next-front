@@ -63,13 +63,13 @@ const ProductDetailContainer = styled.div`
     }
 
     .product_detail_info_main_btn {
-      position: relative;
       display: flex;
       flex-direction: row;
 
       .zzim_btn,
       .call_btn,
       .siren_btn {
+        position: relative;
         width: 33.3333%;
         padding: 0 1rem;
 
@@ -85,12 +85,12 @@ const ProductDetailContainer = styled.div`
 
       .call_btn_svg {
         top: 13px;
-        left: 290px;
+        left: 80px;
       }
 
       .siren_btn_svg {
         top: 10px;
-        left: 530px;
+        left: 100px;
       }
     }
 
@@ -123,6 +123,13 @@ const ProductDetailContainer = styled.div`
       & > div {
         padding: 1.5rem;
       }
+    }
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    svg {
+      width: 15px;
+      height: 15px;
     }
   }
 `;
@@ -235,7 +242,9 @@ const ProductDetail: React.FC<IProps> = () => {
       {/* 상세 내용 */}
       <ProductDetailContent data={detailData} />
       {/* 상품 댓글*/}
-      <ProductDetailComment comments={detailData[0].Comments} />
+      {detailData[0] && detailData[0].Comments && (
+        <ProductDetailComment comments={detailData[0].Comments} />
+      )}
     </ProductDetailContainer>
   );
 };
