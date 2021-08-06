@@ -2,6 +2,7 @@ import { Button } from "@/styles/common/Button";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import ReplyIcon from "@/assets/svg/reply.svg";
 
 const CommentsContainer = styled.div`
   h2 {
@@ -42,6 +43,10 @@ const CommentsInfo = styled.div`
     line-height: 1.5;
     letter-spacing: 0.1em;
   }
+
+  .comments-btn {
+    float: right;
+  }
 `;
 
 // type Comments = {
@@ -63,6 +68,10 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
   return (
     <CommentsContainer>
       <h2>상품 문의</h2>
+      <div>
+        <textarea placeholder="댓글을 입력해주세요." />
+        <Button>댓글달기</Button>
+      </div>
       {comments.map((comment) => (
         <CommentsInfo key={comment.id}>
           {/* 사용자 정보 */}
@@ -83,10 +92,20 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
             <p>{comment.content}</p>
           </div>
 
-          <Button>댓글달기</Button>
-          <Button>댓글수정</Button>
-          <Button>댓글삭제</Button>
-          <Button>신고하기</Button>
+          <div className="comments-btn">
+            <Button color="white">
+              <p style={{ color: "black" }}>답글</p>
+            </Button>
+            <Button color="white">
+              <p style={{ color: "black" }}>수정</p>
+            </Button>
+            <Button color="white">
+              <p style={{ color: "black" }}>삭제</p>
+            </Button>
+            <Button color="white">
+              <p style={{ color: "black" }}>신고</p>
+            </Button>
+          </div>
         </CommentsInfo>
       ))}
     </CommentsContainer>
