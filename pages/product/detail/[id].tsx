@@ -19,23 +19,22 @@ import ProductDetailImage from "@/components/Image/ProductDetailImage";
 import ProductDetailComment from "@/components/Product/ProductDetailComment";
 
 const ProductDetailContainer = styled.div`
+  width: 677px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0 10rem;
 
-  margin-left: auto;
-  margin-right: auto;
-
-  .image_total_info {
+  #image_total_info {
+    position: relative;
+    width: 729px;
+    margin: 0 auto;
     padding-top: 1rem;
-    display: flex;
-    justify-content: center;
 
-    img {
-      width: 300px;
+    /* img {
+      width: 677px;
       height: 300px;
       object-fit: cover;
-    }
+    } */
   }
   .product_detail_info_contents {
     display: flex;
@@ -64,13 +63,14 @@ const ProductDetailContainer = styled.div`
 
     .product_detail_info_main_btn {
       display: flex;
+      justify-content: center;
       flex-direction: row;
 
       .zzim_btn,
       .call_btn,
       .siren_btn {
         position: relative;
-        width: 33.3333%;
+        width: 250px;
         padding: 0 1rem;
 
         svg {
@@ -126,7 +126,16 @@ const ProductDetailContainer = styled.div`
     }
   }
 
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 5rem;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
   @media ${(props) => props.theme.mobile} {
+    padding: 0 1rem;
     svg {
       width: 15px;
       height: 15px;
@@ -149,14 +158,14 @@ const ProductDetail: React.FC<IProps> = () => {
 
   return (
     <ProductDetailContainer>
-      <div className="image_total_info">
+      <section id="image_total_info">
         {detailData.map((data) => (
-          <>
+          <div className="image_slider">
             {/* 이미지 캐러셀 영영 */}
             <ProductDetailImage images={data.Images} />
-          </>
+          </div>
         ))}
-      </div>
+      </section>
       {/* 상품 Detail info content 영역 */}
       <div className="product_detail_info_contents">
         {detailData.map((data) => (
@@ -206,16 +215,16 @@ const ProductDetail: React.FC<IProps> = () => {
 
             {/* 사용자 정보 */}
             {/* 나중에 사용자 정보 컴포넌트 리팩토링 통일하기 */}
-            <Link href="#">
-              <a href="#">
-                <div className="product_detail_user_info">
-                  <img src={data.User.src} alt="사용자프로필" />
-                  <div className="product_detail_user_info_nickname">
+            <div className="product_detail_user_info">
+              <img src={data.User.src} alt="사용자프로필" />
+              <Link href="#">
+                <div className="product_detail_user_info_nickname">
+                  <a href="#">
                     <p>{data.User.nickname} 님의 상점</p>
-                  </div>
+                  </a>
                 </div>
-              </a>
-            </Link>
+              </Link>
+            </div>
 
             {/* 찜,좋아요, 시간 출력 */}
             <div className="product_detail_info_user_info_view">
