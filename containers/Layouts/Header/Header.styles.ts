@@ -140,4 +140,29 @@ export const HeaderSection = styled.div`
       background-color: ${({ theme }) => theme.gray_f7};
     }
   }
+
+  @media ${(props) => props.theme.mobile} {
+    padding: 0 0;
+
+    img {
+      width: 10px;
+      height: 30px;
+    }
+
+    .header-list-wrapper {
+      & ul {
+        & li {
+          width: 30px;
+          height: 30px;
+          padding: 5px 0 0 0;
+          margin: 0 15px;
+          font-size: 13px;
+
+          &:hover span {
+            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
 `;

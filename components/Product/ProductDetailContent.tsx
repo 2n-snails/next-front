@@ -1,11 +1,13 @@
 import { Button } from "@/styles/common/Button";
 import React from "react";
 import styled from "styled-components";
-import TrashIcon from "../../public/static/svg/trash2.svg";
-import EditIcon from "../../public/static/svg/edit.svg";
+import EditIcon from "@/assets/svg/commentEdit.svg";
+import TrashIcon from "@/assets/svg/commentTrash.svg";
 import SirenIcon from "../../public/static/svg/siren.svg";
 
 const ProductDetailContentContainer = styled.div`
+  padding: 0 0 1rem 0;
+  margin-bottom: 10px;
   border-bottom: 1px solid #808080;
 
   .product_detaill_content {
@@ -13,12 +15,15 @@ const ProductDetailContentContainer = styled.div`
     line-height: 1.5em;
     color: #343131;
     font-size: 16px;
+    padding: 1rem 0 2.5rem 0;
   }
 `;
 
 const ProductDetailContentBtn = styled.div`
   float: right;
+
   button {
+    padding: 0 1rem;
     font-size: 14px;
     width: 33.3333%;
   }
