@@ -10,7 +10,7 @@ const ProductDetailContentContainer = styled.div`
   margin-bottom: 10px;
   border-bottom: 1px solid #808080;
 
-  .product_detaill_content {
+  .product_detail_content {
     letter-spacing: 0.08em;
     line-height: 1.5em;
     color: #343131;
@@ -36,7 +36,7 @@ const ProductDetailContent: React.FC<IProps> = ({ data }) => {
   return (
     // 상품 정보 출력
     <ProductDetailContentContainer>
-      <div className="product_detaill_content">
+      <div className="product_detail_content">
         <span>{data[0]?.productContent}</span>
       </div>
 

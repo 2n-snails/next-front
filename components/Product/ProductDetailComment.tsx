@@ -109,8 +109,8 @@ const CommentsInfo = styled.div`
     letter-spacing: 0.1em;
   }
 
-  .comments-btn-container {
-    .comments-btn-info {
+  .comments_btn_container {
+    .comments_btn_info {
       display: flex;
       padding-left: 50%;
       margin-left: auto;
@@ -123,7 +123,7 @@ const CommentsInfo = styled.div`
     }
 
     @media ${(props) => props.theme.mobile} {
-      .comments-btn-info {
+      .comments_btn-info {
         padding-left: 20%;
         width: 300px;
         button {
@@ -145,20 +145,23 @@ const CommentsInfo = styled.div`
 //     comments: Array<Comments>;
 //  }
 
+const areaMaxNumber = 100;
+
 interface IProps {
   comments: any;
 }
 
 const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
   const [commentContent, setCommentContent] = useState("");
-  const areaMaxNumber = 100;
+  const [commentEditText, setCommentEditText] = useState(false);
 
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
 
-      const commentLength = commentContent.length;
+      const commentLength = commentContent.trim().length;
       const commentValid = commentLength >= areaMaxNumber;
+
       if (commentValid) {
         alert("길이초과");
         return false;
@@ -171,13 +174,20 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
     [commentContent],
   );
 
-  const setTextArea = (e) => {
+  const setTextArea = useCallback((e) => {
     setCommentContent(e.target.value);
-  };
+  }, []);
 
-  const commentEdit = (id) => {
+  // 댓글 수정
+  const commentEdit = useCallback((id) => {
     console.log(id);
-  };
+    //로그인한 유저와 비교해서 댓글 수정창 열리도록 하기
+    setCommentEditText((prev) => !prev);
+    if (commentEditText) {
+      return <div />;
+    }
+    return false;
+  }, []);
 
   return (
     <CommentsContainer>
@@ -187,6 +197,7 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
           <em>{comments?.length > 0 ? comments.length : 0}</em>개
         </span>
       </h2>
+      {/* 댓글 form */}
       <form onSubmit={onSubmit}>
         <div className="comments_input_container">
           <div className="comments_input_info">
@@ -218,6 +229,7 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
           </div>
         </div>
       </form>
+
       {comments.map((comment) => (
         <CommentsInfo key={comment.id}>
           {/* 사용자 정보 */}
@@ -236,18 +248,54 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
             </div>
           </div>
 
-          <div className="comments_content">
-            <p>{comment.content}</p>
-          </div>
+          {/* 댓글 list */}
+          {commentEditText ? (
+            <form onSubmit={() => {}}>
+              <div className="comments_input_container">
+                <div className="comments_input_info">
+                  <label>
+                    <textarea
+                      placeholder="댓글을 입력해주세요."
+                      onChange={() => {}}
+                      value={comment.content}
+                      required
+                    >
+                      {comment.content}
+                    </textarea>
+                  </label>
+                </div>
 
-          <div className="comments-btn-container">
-            <div className="comments-btn-info">
+                <div className="comments_input_send_info">
+                  <div className="comments_input_letter_lengh">
+                    <p>
+                      <span>
+                        {commentContent.length}/{areaMaxNumber}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="comments_input_btn">
+                    <Button color="#5ebcfb" type="submit">
+                      등록
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          ) : (
+            <div className="comments_content">
+              <p>{comment.content}</p>
+            </div>
+          )}
+          <div className="comments_btn_container">
+            <div className="comments_btn_info">
               <Button color="white">
                 <ReplyIcon width="18px" height="18px" />
               </Button>
+
               <Button color="white" onClick={() => commentEdit(comment.id)}>
                 <CommentEditIcon width="18px" height="18px" />
               </Button>
+
               <Button color="white">
                 <CommentTrashIcon width="18px" height="18px" />
               </Button>
