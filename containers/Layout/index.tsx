@@ -4,7 +4,7 @@ import HeaderContainer from "./Header/Header.Container";
 interface Props {
   children: React.ReactNode;
 }
-const Layout = ({ children }: Props): JSX.Element => {
+const LayoutComponents = ({ children }: Props): JSX.Element => {
   return (
     <>
       <HeaderContainer />
@@ -13,4 +13,4 @@ const Layout = ({ children }: Props): JSX.Element => {
   );
 };
 
-export default Layout;
+export default LayoutComponents;
