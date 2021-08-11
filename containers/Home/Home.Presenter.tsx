@@ -1,6 +1,7 @@
 import Product from "@/components/Product";
 import React from "react";
 
+// UI는 Presenter에서 관리한다.
 const HomePresenter = ({ productsList }: any) => {
   return (
     <>
