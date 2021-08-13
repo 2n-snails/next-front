@@ -6,8 +6,8 @@ import { productOptionList } from "@/lib/data/staticData";
 import { SelectBox } from "@/components/common/SelectBox";
 
 const MainContainer = styled.div`
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   .main_select_box {
     display: flex;
@@ -49,16 +49,17 @@ const FaqContainer = styled.div`
 
 const HomeContainer = styled.div`
   display: grid;
+
   grid-template-columns: repeat(5, 1fr);
   row-gap: 3rem;
   column-gap: 1rem;
 
   @media ${(props) => props.theme.tablet} {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media ${(props) => props.theme.mobile} {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -77,6 +78,7 @@ const Home: React.FC = () => {
 
   return (
     <MainContainer>
+
       {/* select box */}
       <div className="main_select_box">
         <SelectBox
@@ -100,6 +102,7 @@ const Home: React.FC = () => {
           </>
         ))}
       </HomeContainer>
+
     </MainContainer>
   );
 };
