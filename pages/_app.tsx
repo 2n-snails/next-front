@@ -5,16 +5,17 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import GlobalStyle from "@/styles/GlobalStyle";
-import Header from "@/containers/Layouts/Header";
+import LayoutComponents from "@/containers/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header />
-        <Component {...pageProps} />
-        <div id="root-modal" />
+        <LayoutComponents>
+          <Component {...pageProps} />
+          <div id="root-modal" />
+        </LayoutComponents>
       </ThemeProvider>
     </>
   );

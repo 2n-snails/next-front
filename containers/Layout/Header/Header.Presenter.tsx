@@ -4,12 +4,12 @@ import HeaderAuths from "@/components/Header/HeaderAuths";
 import SearchIcon from "@/assets/svg/search.svg";
 import { HeaderSection } from "./Header.styles";
 
-interface HeaderContainerProps {
+interface HeaderPresenterProps {
   isLoggedIn: boolean;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
-const HeaderContainer: React.FC<HeaderContainerProps> = ({
+const HeaderPresenter: React.FC<HeaderPresenterProps> = ({
   isLoggedIn,
   // setIsLoggedIn,
 }) => {
@@ -54,4 +54,4 @@ const HeaderContainer: React.FC<HeaderContainerProps> = ({
   );
 };
 
-export default HeaderContainer;
+export default HeaderPresenter;
