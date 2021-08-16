@@ -5,6 +5,8 @@ import Products from "@/components/Product/Product";
 import { productOptionList } from "@/lib/data/staticData";
 import { SelectBox } from "@/components/common/SelectBox";
 
+import UserInfo from "@/components/UserInfo/UserInfo";
+
 const MainContainer = styled.div`
   margin-left: 2rem;
   margin-right: 2rem;
@@ -17,45 +19,52 @@ const MainContainer = styled.div`
   }
 `;
 
-const FaqContainer = styled.div`
-  .faq_main_content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    right: 5%;
-    bottom: 50%;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(
-      rgb(204 234 255) 0%,
-      rgb(52 170 255) 100%,
-      rgb(207 230 255) 100%
-    );
-    position: fixed;
-    border-radius: 50%;
-    box-shadow: box-shadow rgb(0 0 0 / 15%) 0px 4px 6px 0px;
+const ButtonContainer = styled.div`
+width: 10rem;
+height: 10rem;
+margin-right: 2rem;
+button {
+    margin-bottom:1rem;
+    width: 10rem;
+    height: 2rem;
+    border-style:none;
+    border-radius: 2rem;
+    background-color:  ${({ theme }) => theme.color.gray_c4};
     cursor: pointer;
+}
 
-    &:before {
-      content: "";
-      width: 34px;
-      height: 34px;
-      background-image: url("https://cdn.channel.io/plugin/images/ch-new-launcher-icon-68.png");
-      background-size: 136px;
-      background-position: 0 0;
-    }
-  }
+@media ${(props) => props.theme.mobile} {
+   display: flex;
+   width: 20rem;
+   height: 5rem;
+   margin-bottom: 1rem;
+   button {
+    width: 9rem;
+}
+}
+
 `;
+
+const ButtonHomeContainer = styled.div`
+display: flex;
+justify-content: space-between;
+
+@media ${(props) => props.theme.mobile} {
+    flex-direction: column;
+}
+`;
+
+
 
 const HomeContainer = styled.div`
   display: grid;
 
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 3rem;
   column-gap: 1rem;
 
   @media ${(props) => props.theme.tablet} {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media ${(props) => props.theme.mobile} {
@@ -63,7 +72,7 @@ const HomeContainer = styled.div`
   }
 `;
 
-const Home: React.FC = () => {
+const MyPage: React.FC = () => {
   const [productOption, setProductOption] = useState<string | undefined>();
 
   const { productsList } = useSelector((state: any) => state.products);
@@ -79,8 +88,14 @@ const Home: React.FC = () => {
   return (
     <MainContainer>
 
+        <UserInfo/>
+
+
+
       {/* select box */}
       <div className="main_select_box">
+
+
         <SelectBox
           type="normal"
           options={productOptionList}
@@ -90,21 +105,31 @@ const Home: React.FC = () => {
         />
       </div>
 
-      {/* 문의하기 버튼 */}
-      <FaqContainer>
-        <div className="faq_main_content" />
-      </FaqContainer>
+      <ButtonHomeContainer>
+        <ButtonContainer>
+            <div className="button_container_top">
+            <button>판매중인 상품</button>
+            <button>찜 상품</button>
+            </div>
+            <div className="button_container_bottom">
+            <button>내 상점 후기 보기</button>
+            <button>내 정보</button>
+            </div>
+        </ButtonContainer>
 
-      <HomeContainer>
-        {productsList.map((data: any) => (
-          <>
-            <Products data={data} />
-          </>
-        ))}
-      </HomeContainer>
+        <HomeContainer>
+            {productsList.map((data: any) => (
+            <>
+                <Products data={data} />
+            </>
+            ))}
+        </HomeContainer>
+
+      </ButtonHomeContainer>
+
 
     </MainContainer>
   );
 };
 
-export default Home;
+export default MyPage;

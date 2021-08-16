@@ -25,6 +25,12 @@ const globalStyle = css`
   p {
     margin: 0;
   }
+
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
