@@ -12,7 +12,6 @@ const ProfileContainer = styled.div`
 
 const ProfileImageSection = styled.section`
   width: 100%;
-  height: auto;
   padding: 0 20rem;
   display: flex;
   flex-direction: column;
@@ -58,6 +57,7 @@ const IntroduceSection = styled.section`
   padding: 0 20rem;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 3rem;
 
   @media ${(props) => props.theme.tablet} {
     padding: 0 10rem;
@@ -117,6 +117,33 @@ const TextArea = styled.textarea`
   margin-bottom: 1rem;
 `;
 
+const RetirementSection = styled.section`
+  display: flex;
+  width: 100%;
+  padding: 0 20rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 10rem;
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    padding: 0 2rem;
+  }
+
+  button {
+    width: 5rem;
+    height: 2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const RetireDescription = styled.span`
+  color: #787a91;
+`;
+
 const Profile = () => {
   return (
     <ProfileContainer>
@@ -156,6 +183,15 @@ const Profile = () => {
           </ButtonComponent>
         </EditIntroduce>
       </IntroduceSection>
+
+      <RetirementSection>
+        <ButtonComponent name="회원 탈퇴" type="button" color="#f8485e">
+          <span>회원 탈퇴</span>
+        </ButtonComponent>
+        <RetireDescription>
+          탈퇴 시 작성하신 포스트 및 댓글이 모두 삭제되며 복구되지 않습니다.
+        </RetireDescription>
+      </RetirementSection>
     </ProfileContainer>
   );
 };
