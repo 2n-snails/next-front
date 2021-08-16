@@ -10,7 +10,7 @@ const ProfileContainer = styled.div`
   flex-direction: column;
 `;
 
-const ProfileImageSectionWrapper = styled.div`
+const ProfileImageSection = styled.section`
   width: 100%;
   height: auto;
   padding: 0 20rem;
@@ -18,6 +18,15 @@ const ProfileImageSectionWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10em;
+
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 10rem;
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    padding: 0 2rem;
+  }
 
   button {
     width: 7rem;
@@ -32,6 +41,7 @@ const ProfileImageSectionWrapper = styled.div`
     margin-top: 1rem;
   }
 `;
+
 const ProfileImage = styled.div`
   width: 5rem;
   height: 5rem;
@@ -42,10 +52,75 @@ const ProfileImage = styled.div`
   justify-content: center;
 `;
 
+const IntroduceSection = styled.section`
+  display: flex;
+  width: 100%;
+  padding: 0 20rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media ${(props) => props.theme.tablet} {
+    padding: 0 10rem;
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    padding: 0 2rem;
+  }
+`;
+
+const Username = styled.div`
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+
+  .username {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  button {
+    color: #f8485e;
+    width: 4rem;
+    font-size: 0.8rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0;
+    margin-left: 0.5rem;
+  }
+`;
+
+const IntroduceText = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const EditIntroduce = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  button {
+    color: #787a91;
+    font-size: 0.8rem;
+    border: 1px solid lightgray;
+    width: 5rem;
+    height: 2rem;
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  height: 20rem;
+  border: 1px solid lightgray;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+`;
+
 const Profile = () => {
   return (
     <ProfileContainer>
-      <ProfileImageSectionWrapper>
+      <ProfileImageSection>
         <ProfileImage>
           <Person />
         </ProfileImage>
@@ -57,7 +132,30 @@ const Profile = () => {
         <ButtonComponent name="이미지 제거" type="button" color="white">
           <span>이미지 제거</span>
         </ButtonComponent>
-      </ProfileImageSectionWrapper>
+      </ProfileImageSection>
+
+      <IntroduceSection>
+        <Username>
+          <span className="username">빈티지픽</span>
+
+          <ButtonComponent name="닉네임 수정" type="button" color="white">
+            <span>닉네임 수정</span>
+          </ButtonComponent>
+        </Username>
+
+        <IntroduceText>
+          안녕하세요 정품 빈티지 쇼핑몰인 빈티지픽입니다. 2개이상 구매시
+          무료배송 3, 4개 구매시 추가할인 들어가며 구입 후 포토후기는 적립금
+          지급됩니다 ~~!! 첫 구매시 천원 적립금이 지급됩니다 ~~!!
+        </IntroduceText>
+
+        <EditIntroduce>
+          <TextArea />
+          <ButtonComponent name="소개글 수정" type="button" color="white">
+            <span>소개글 수정</span>
+          </ButtonComponent>
+        </EditIntroduce>
+      </IntroduceSection>
     </ProfileContainer>
   );
 };
