@@ -1,9 +1,10 @@
+import Product from "@/components/Product";
 import React from "react";
-import { NextPage } from "next";
-import Home from "@/components/Home/Home";
+import { useSelector } from "react-redux";
 
-const index: NextPage = () => {
-  return <Home />;
+const index = () => {
+  const data = useSelector((state: any) => state.products.productsList);
+  return <Product data={data} />;
 };
 
 export default index;

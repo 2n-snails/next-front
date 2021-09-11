@@ -18,7 +18,7 @@ const init = {
   productsList: [
     {
       productNo: shortId.generate(),
-      // productPrice: Faker.random.number(99999999),
+      productPrice: Faker.datatype.number(999999),
       productUploadDate: "2020-05-04",
       productLike: 10,
       //상품 작정자 정보
@@ -71,7 +71,7 @@ init.productsList = init.productsList.concat(
     .fill()
     .map(() => ({
       productNo: shortId.generate(),
-      // productPrice: Faker.random.number(99999999),
+      productPrice: Faker.datatype.number(999999),
       productUploadDate: "2020-05-04",
       // 상품 좋아요
       // productLike: Faker.random.number(1000),

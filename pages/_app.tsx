@@ -5,7 +5,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import GlobalStyle from "@/styles/GlobalStyle";
-import LayoutComponents from "@/containers/Layout";
+import LayoutComponents from "@/components/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -14,7 +14,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         <GlobalStyle />
         <LayoutComponents>
           <Component {...pageProps} />
-          <div id="root-modal" />
         </LayoutComponents>
       </ThemeProvider>
     </>
