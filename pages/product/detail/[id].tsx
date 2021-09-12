@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Link from "next/link";
-import ButtonComponent from "@/components/common/Button";
+
 import Zzim from "@/assets/svg/zzim.svg";
 import Call from "@/assets/svg/call.svg";
 import Siren from "@/assets/svg/siren.svg";
@@ -15,8 +15,8 @@ import { DateFormat } from "utils/format_date";
 import ProductDetailContent from "@/components/Product/ProductDetailContent";
 import React from "react";
 
-import ProductDetailImage from "@/components/Image/ProductDetailImage";
 import ProductDetailComment from "@/components/Product/ProductDetailComment";
+import { Button } from "@/styles/common/Button";
 
 const ProductDetailContainer = styled.div`
   width: 677px;
@@ -162,7 +162,7 @@ const ProductDetail: React.FC<IProps> = () => {
         {detailData.map((data) => (
           <div className="image_slider">
             {/* 이미지 캐러셀 영영 */}
-            <ProductDetailImage images={data.Images} />
+            {/* <ProductDetailImage images={data.Images} /> */}
           </div>
         ))}
       </section>
@@ -185,31 +185,23 @@ const ProductDetail: React.FC<IProps> = () => {
             {/* 상품 버튼 */}
             <div className="product_detail_info_main_btn">
               <div className="zzim_btn">
-                <ButtonComponent name="찜하기" type="button" color="#2fa0ead9">
+                <Button name="찜하기" type="button" color="#2fa0ead9">
                   <p>찜하기</p>
                   <Zzim className="zzim_btn_svg" />
-                </ButtonComponent>
+                </Button>
               </div>
 
               <div className="call_btn">
-                <ButtonComponent
-                  name="연락하기"
-                  type="button"
-                  color="#9bd00ed9"
-                >
+                <Button name="연락하기" type="button" color="#9bd00ed9">
                   <p>연락하기</p>
                   <Call className="call_btn_svg" />
-                </ButtonComponent>
+                </Button>
               </div>
               <div className="siren_btn">
-                <ButtonComponent
-                  name="신고하기"
-                  type="button"
-                  color="#f8d6d6b5"
-                >
+                <Button name="신고하기" type="button" color="#f8d6d6b5">
                   <p>신고하기</p>
                   <Siren className="siren_btn_svg" />
-                </ButtonComponent>
+                </Button>
               </div>
             </div>
 

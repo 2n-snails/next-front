@@ -1,13 +1,11 @@
-import Button from "@/components/common/Button";
 import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Products from "@/components/Product/Product";
+import Products from "@/components/Product";
 import { productOptionList } from "@/lib/data/staticData";
-import { SelectBox } from "@/components/common/SelectBox";
 import Link from "next/link";
-
-import UserInfo from "@/components/UserInfo/UserInfo";
+import { Button } from "@/styles/common/Button";
+import { SelectBox } from "../common/SelectBox";
 
 const MainContainer = styled.div`
   margin-left: 2rem;
@@ -86,7 +84,7 @@ const MyPage: React.FC = () => {
 
   return (
     <MainContainer>
-      <UserInfo />
+      {/* <UserInfo /> */}
 
       {/* select box */}
       <div className="main_select_box">

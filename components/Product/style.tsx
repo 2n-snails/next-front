@@ -28,10 +28,10 @@ export const ProductInfoContainerStyle = styled.div`
   width: 250px;
   height: 410px;
   border: 1px solid ${theme.color.gray_cc};
+  outline: none;
   border-radius: 3px;
-
   img {
-    width: 250px;
+    width: 100%;
     height: 230px;
     object-fit: cover;
   }
@@ -54,6 +54,7 @@ export const ProductInfoDetailStyle = styled.div`
     width: 1px;
     height: 16px;
     border: 1px solid ${theme.color.gray_cc};
+    outline: none;
   }
 
   .product_sub_title {

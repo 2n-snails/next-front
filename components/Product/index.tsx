@@ -83,7 +83,9 @@ const Product: React.FC<IProps> = ({ data }) => {
                   서울 강남구 일원2동
                 </span>
                 <div className="product_blank" />
-                <span className="product_sub_title_time">8분전</span>
+                <span className="product_sub_title_time">
+                  {DateFormat(item.productUploadDate)}
+                </span>
               </div>
 
               <p className="product_price">
@@ -99,9 +101,9 @@ const Product: React.FC<IProps> = ({ data }) => {
                 </div>
                 <div className="product_user_icon">
                   <ProductHeart />
-                  <span>13</span>
+                  <span>{item.productLike}</span>
                   <CommentIcon />
-                  <span>14</span>
+                  <span>{item.Comments?.length}</span>
                 </div>
               </ProductUserContainerStyle>
             </ProductInfoDetailStyle>
