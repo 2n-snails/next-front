@@ -64,10 +64,10 @@ const UserInfoContainer = styled.div`
 `;
 
 interface IProps {
-  data: any;
+  data?: any;
 }
 
-const UserInfo: React.FC<IProps> = ({ data }) => {
+const UserInfo: React.FC<IProps> = () => {
   return (
     <UserInfoContainer>
       <figure className="user_info_img">

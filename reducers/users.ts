@@ -1,7 +1,7 @@
 import produce from "immer";
 import { UserType } from "@/types/users";
 import {
-  userAction,
+  // userAction,
   LOAD_USERS_REQUEST,
   LOAD_USERS_SUCCESS,
   LOAD_USERS_ERROR,
@@ -22,7 +22,7 @@ const init: UserStateProps = {
 };
 
 const users = (state = init, action) =>
-  produce(state, (draft) => {
+  produce(state, (/* draft */) => {
     switch (action) {
       case LOAD_USERS_REQUEST:
         break;

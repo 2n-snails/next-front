@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+// import styled from "styled-components";
 import ProductHeart from "@/assets/svg/Main/Product/product_heart.svg";
 import CommentIcon from "@/assets/svg/Main/Product/comment.svg";
 

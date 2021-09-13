@@ -47,7 +47,9 @@ const Header: React.FC = () => {
 
         <HeaderInfo>
           <button type="button">
-            <SellIcon />
+            <Link href="/login">
+              <SellIcon />
+            </Link>
           </button>
 
           <button type="button">
