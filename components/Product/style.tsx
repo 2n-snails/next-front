@@ -29,11 +29,16 @@ export const ProductInfoContainerStyle = styled.div`
   height: 410px;
   border: 1px solid ${theme.color.gray_cc};
   outline: none;
-  border-radius: 3px;
-  img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
+  border-radius: 8px;
+  overflow: hidden;
+
+  .product_main_image {
+    img {
+      width: 100%;
+      height: 230px;
+      outline: none;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -51,9 +56,9 @@ export const ProductInfoDetailStyle = styled.div`
   }
 
   .product_blank {
-    width: 1px;
+    width: 0.5px;
     height: 16px;
-    border: 1px solid ${theme.color.gray_cc};
+    border: 0.5px solid ${theme.color.gray_cc};
     outline: none;
   }
 

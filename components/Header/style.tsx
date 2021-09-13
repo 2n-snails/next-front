@@ -34,6 +34,7 @@ export const HeaderItems = styled.div`
 `;
 
 export const HeaderInfo = styled.div`
+  position: relative;
   display: flex;
   justify-items: center;
   align-items: center;

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
 import ProductHeart from "@/assets/svg/Main/Product/product_heart.svg";
 import CommentIcon from "@/assets/svg/Main/Product/comment.svg";
 
@@ -10,57 +9,14 @@ import {
   ProductListStyle,
   ProductInfoContainerStyle,
   ProductInfoDetailStyle,
-  ProductUserProfileStyle,
   ProductUserContainerStyle,
 } from "./style";
-
-const ProductUserInfo = styled.div`
-  display: flex;
-  line-height: 1.5;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 0.625rem 0.6rem 0.625rem;
-  border: 1px solid rgb(248, 249, 250);
-  width: 100%;
-
-  a {
-    display: flex;
-    align-items: center;
-  }
-
-  .product_user_name {
-    font-size: 14px;
-    color: rgb(52, 58, 64);
-  }
-
-  #product_user_img img {
-    display: block;
-    object-fit: cover;
-    width: 2rem;
-    height: 2rem;
-    display: block;
-    border-radius: 50%;
-    margin-top: 5px;
-    margin-right: 0.5rem;
-  }
-
-  .product_user_info_like {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-
-    svg {
-      margin-right: 0.5rem;
-    }
-  }
-`;
 
 interface IProps {
   data: any;
 }
 
 const Product: React.FC<IProps> = ({ data }) => {
-  console.log(data);
   return (
     <ProductContainer>
       <ProductListStyle>
@@ -68,9 +24,9 @@ const Product: React.FC<IProps> = ({ data }) => {
           <ProductInfoContainerStyle>
             <Link href={`/product/detail/${item.productNo}`}>
               <a>
-                <figure id="product_image">
+                <div className="product_main_image">
                   <img src={item.Images[0].src} alt="상품 이미지" />
-                </figure>
+                </div>
               </a>
             </Link>
             <ProductInfoDetailStyle>
