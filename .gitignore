@@ -35,3 +35,4 @@ yarn-error.log*
 
 # NPM 설치시 react-js 라이브러리 설치 오류남
 package-lock.json
+.idea

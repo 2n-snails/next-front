@@ -30,7 +30,7 @@ interface IProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 export const SelectBox: React.FC<IProps> = ({
   type = "normal",
   options = [],
-  errorMessage = "옵션을 선택하세요.",
+  // errorMessage = "옵션을 선택하세요.",
   ...props
 }) => {
   return (

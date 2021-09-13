@@ -163,12 +163,14 @@ const ProductDetailComment: React.FC<IProps> = ({ comments }) => {
       const commentValid = commentLength >= areaMaxNumber;
 
       if (commentValid) {
+        // eslint-disable-next-line no-alert
         alert("길이초과");
         return false;
       }
 
       commentContent.trim();
       setCommentContent("");
+      // eslint-disable-next-line no-alert
       return alert("댓글입력 성공");
     },
     [commentContent],
