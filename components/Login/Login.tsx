@@ -7,16 +7,26 @@ import Link from "next/link";
 
 const LoginContainer = styled.div`
   text-align: center;
+  margin: 5vh 0px;
+  .container {
+    border: 1px solid #d9dcdd;
+    box-sizing: border-box;
+    border-radius: 3px;
+    height: 90vh;
+    padding-top: 50px;
+    margin: auto;
+    max-width: 480px;
+  }
 `;
 const LogoContainer = styled.div`
-  margin: 60px 0px;
+  text-align: center;
+
+  image {
+    width: 250px;
+  }
 `;
 const LoginFormContainer = styled.div`
-  text-align: center;
   min-width: 320px;
-  div {
-    text-align: center;
-  }
   img {
     width: 500px;
   }
@@ -24,25 +34,27 @@ const LoginFormContainer = styled.div`
 const LoginPage: React.FC = () => {
   return (
     <LoginContainer>
-      <LogoContainer>
-        <MainLogo />
-      </LogoContainer>
-      <LoginFormContainer>
-        <div>
-          <Link href="http://localhost:4000/user/auth/facebook">
-            <a>
-              <Naver />
-            </a>
-          </Link>
-        </div>
-        <div>
-          <Link href="http://localhost:4000/user/auth/kakao">
-            <a>
-              <Kakao />
-            </a>
-          </Link>
-        </div>
-      </LoginFormContainer>
+      <div className="container">
+        <LogoContainer>
+          <MainLogo />
+        </LogoContainer>
+        <LoginFormContainer>
+          <div>
+            <Link href="http://localhost:4000/user/auth/facebook">
+              <a>
+                <Naver />
+              </a>
+            </Link>
+          </div>
+          <div>
+            <Link href="http://localhost:4000/user/auth/kakao">
+              <a>
+                <Kakao />
+              </a>
+            </Link>
+          </div>
+        </LoginFormContainer>
+      </div>
     </LoginContainer>
   );
 };
