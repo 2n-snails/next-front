@@ -1,46 +1,48 @@
 import React from "react";
 import styled from "styled-components";
 import MainLogo from "@/assets/svg/loginLogo.svg";
+import Kakao from "@/assets/svg/auth/kakao.svg";
+import Naver from "@/assets/svg/auth/naver.svg";
 import Link from "next/link";
 
 const LoginContainer = styled.div`
-  margin-left: 2rem;
-  margin-right: 2rem;
-
-  .main_select_box {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-    padding: 1.5rem 0;
+  text-align: center;
+`;
+const LogoContainer = styled.div`
+  margin: 60px 0px;
+`;
+const LoginFormContainer = styled.div`
+  text-align: center;
+  min-width: 320px;
+  div {
+    text-align: center;
+  }
+  img {
+    width: 500px;
   }
 `;
-
 const LoginPage: React.FC = () => {
   return (
     <LoginContainer>
-      <div style={{ textAlign: "center" }}>
+      <LogoContainer>
         <MainLogo />
-      </div>
-      <div>
-        {" "}
-        {/* 로우 */}
+      </LogoContainer>
+      <LoginFormContainer>
         <div>
-          <Link href="http://localhost:4000/user/auth/facebook	">
-            <img
-              src="/static/png/naverLogin.png"
-              alt="네이버 아이디로 로그인"
-            />
+          <Link href="http://localhost:4000/user/auth/facebook">
+            <a>
+              <Naver />
+            </a>
           </Link>
         </div>
         <div>
           <Link href="http://localhost:4000/user/auth/kakao">
-            <img
-              src="/static/png/kakaoLogin.png"
-              alt="카카오 아아디로 로그인"
-            />
+            <a>
+              <Kakao />
+            </a>
           </Link>
         </div>
-      </div>
+      </LoginFormContainer>
     </LoginContainer>
   );
 };
