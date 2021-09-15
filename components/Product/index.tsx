@@ -22,7 +22,7 @@ const Product: React.FC<IProps> = ({ data }) => {
     <ProductContainer>
       <ProductListStyle>
         {data.map((item) => (
-          <ProductInfoContainerStyle key={item.productNo}>
+          <ProductInfoContainerStyle>
             <Link href={`/product/detail/${item.productNo}`}>
               <a>
                 <div className="product_main_image">

@@ -106,9 +106,7 @@ const MyPage: React.FC = () => {
           <div className="button_container_bottom">
             <Button>내 상점 후기 보기</Button>
             <Link href="/profile">
-              <a>
-                <Button>내 정보</Button>
-              </a>
+              <Button>내 정보</Button>
             </Link>
           </div>
         </ButtonContainer>
