@@ -33,7 +33,7 @@ const globalStyle = css`
   }
 `;
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     ${globalStyle}
 `;
 
