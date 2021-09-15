@@ -72,7 +72,7 @@ const HomeContainer = styled.div`
 const MyPage: React.FC = () => {
   const [productOption, setProductOption] = useState<string | undefined>();
 
-  const { productsList } = useSelector((state: any) => state.products);
+  const data = useSelector((state: any) => state.products.productsList);
 
   //* 상품 옵션 변경 시
   const onChangeProductOption = useCallback(
@@ -112,11 +112,7 @@ const MyPage: React.FC = () => {
         </ButtonContainer>
 
         <HomeContainer>
-          {productsList.map((data: any) => (
-            <>
-              <Products data={data} />
-            </>
-          ))}
+          <Products data={data} />
         </HomeContainer>
       </ButtonHomeContainer>
     </MainContainer>
