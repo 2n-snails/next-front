@@ -152,22 +152,22 @@ const Profile = () => {
           <Person />
         </ProfileImage>
 
-        <ButtonComponent name="이미지 업로드" type="button" color="#50cb93">
-          <span>이미지 업로드</span>
-        </ButtonComponent>
+        {/* <ButtonComponent name="이미지 업로드" type="button" color="#50cb93"> */}
+        <span>이미지 업로드</span>
+        {/* </ButtonComponent> */}
 
-        <ButtonComponent name="이미지 제거" type="button" color="white">
-          <span>이미지 제거</span>
-        </ButtonComponent>
+        {/* <ButtonComponent name="이미지 제거" type="button" color="white"> */}
+        <span>이미지 제거</span>
+        {/* </ButtonComponent> */}
       </ProfileImageSection>
 
       <IntroduceSection>
         <Username>
           <span className="username">빈티지픽</span>
 
-          <ButtonComponent name="닉네임 수정" type="button" color="white">
-            <span>닉네임 수정</span>
-          </ButtonComponent>
+          {/* <ButtonComponent name="닉네임 수정" type="button" color="white"> */}
+          <span>닉네임 수정</span>
+          {/* </ButtonComponent> */}
         </Username>
 
         <IntroduceText>
@@ -178,16 +178,16 @@ const Profile = () => {
 
         <EditIntroduce>
           <TextArea />
-          <ButtonComponent name="소개글 수정" type="button" color="white">
-            <span>소개글 수정</span>
-          </ButtonComponent>
+          {/* <ButtonComponent name="소개글 수정" type="button" color="white"> */}
+          <span>소개글 수정</span>
+          {/* </ButtonComponent> */}
         </EditIntroduce>
       </IntroduceSection>
 
       <RetirementSection>
-        <ButtonComponent name="회원 탈퇴" type="button" color="#f8485e">
-          <span>회원 탈퇴</span>
-        </ButtonComponent>
+        {/* <ButtonComponent name="회원 탈퇴" type="button" color="#f8485e"> */}
+        <span>회원 탈퇴</span>
+        {/* </ButtonComponent> */}
         <RetireDescription>
           탈퇴 시 작성하신 포스트 및 댓글이 모두 삭제되며 복구되지 않습니다.
         </RetireDescription>
