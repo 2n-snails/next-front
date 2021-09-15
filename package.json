@@ -39,6 +39,7 @@
     "immer": "^9.0.3",
     "jsonwebtoken": "^8.5.1",
     "next": "^10.2.3",
+    "next-cookies": "^2.0.3",
     "next-images": "^1.8.1",
     "next-redux-saga": "^4.1.2",
     "next-redux-wrapper": "^6.0.2",
