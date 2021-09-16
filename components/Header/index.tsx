@@ -19,16 +19,16 @@ import { MenuStyle } from "../Menu/style";
 const Header: React.FC = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const onClickUserProfile = () => {
-    setShowUserMenu((prev) => !prev);
-  };
-  const onClickClose = (e) => {
+  // const onClickUserProfile = () => {
+  //   setShowUserMenu((prev) => !prev);
+  // };
+  const onClickClose = () => {
     setShowUserMenu((prev) => !prev);
   };
 
-  const onCloseModal = (e) => {
-    setShowUserMenu(false);
-  };
+  // const onCloseModal = (e) => {
+  //   setShowUserMenu(false);
+  // };
   return (
     <HeaderContainer>
       <HeaderItems>
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
             <MenuStyle>
               <ul>
                 <li>
-                  <Link href="#">
+                  <Link href="/chat">
                     <a>
                       <ChatIcon />
                       <span>채팅</span>

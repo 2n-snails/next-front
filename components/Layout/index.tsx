@@ -13,12 +13,6 @@ const Container = styled.div`
     max-height: 100%;
     overflow: hidden;
   }
-  /*
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    max-width: 414px;
-    max-height: 896px;
-    background-color: black;
-  } */
 `;
 
 interface Props {
