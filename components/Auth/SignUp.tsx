@@ -19,14 +19,14 @@ const SingUp: React.FC = () => {
         </LogoContainer>
         <SocialContainer>
           <div>
-            <Link href="http://localhost:4000/api/v1/users/auth/naver">
+            <Link href="http://thesecondcycle.net​/api​/v2​/user​/auth​/naver">
               <a>
                 <Naver />
               </a>
             </Link>
           </div>
           <div>
-            <Link href="http://localhost:4000/api/v1/users/auth/kakao">
+            <Link href="http://thesecondcycle.net​/api​/v2​/user​/auth​/kakao">
               <a>
                 <Kakao />
               </a>
