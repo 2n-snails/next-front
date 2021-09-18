@@ -1,3 +1,4 @@
+import theme from "@/styles/theme";
 import styled from "styled-components";
 
 export const SingUpContainer = styled.div`
@@ -18,6 +19,12 @@ export const SingUpContainer = styled.div`
     box-sizing: border-box;
     border-radius: 3px;
   }
+
+  @media only screen and ${theme.mobile} {
+    .box {
+      border: none;
+    }
+  }
 `;
 export const LogoContainer = styled.div`
   width: 250px;
@@ -27,11 +34,28 @@ export const LogoContainer = styled.div`
   image {
     width: 250px;
   }
+  @media only screen and ${theme.mobile} {
+    width: 180px;
+    image {
+      width: 180px;
+    }
+  }
 `;
 export const SocialContainer = styled.div`
   min-width: 320px;
 
   div {
     padding-top: 10px;
+  }
+
+  @media only screen and ${theme.mobile} {
+    /* min-width: 180px; */
+    a {
+      /* width: 100%; */
+      /* rect {
+        width: 80%;
+        height: auto;
+      } */
+    }
   }
 `;
