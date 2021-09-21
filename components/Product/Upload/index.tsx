@@ -84,9 +84,14 @@ const ProductCategory = styled.div<{ select: boolean }>`
 `;
 const ProductUpload: React.FC = () => {
   const [category, setCategory] = useState<number>(0);
+  const [childCategory, setChildCategory] = useState<number>(0);
 
   const handleChangeCategory = (value: number) => {
     setCategory(value);
+  };
+
+  const handleChangeChildCategory = (value: number) => {
+    setChildCategory(value);
   };
   const categoryList = [
     {
@@ -292,19 +297,25 @@ const ProductUpload: React.FC = () => {
               ))}
             </div>
             <div className="form-checkbox-group">
-              <div>
-                {categoryList[category].children.map((value) => (
+              {categoryList[category].children.map((value, index) => (
+                <ProductCategory
+                  select={
+                    categoryList[category].children[index] ===
+                    categoryList[category].children[childCategory]
+                  }
+                >
                   <label htmlFor={value.key} key={value.key}>
                     <input
                       id={value.key}
                       value={value.title}
                       name="bottom_category"
                       type="radio"
+                      onChange={() => handleChangeChildCategory(index)}
                     />
-                    <span>{value.title}</span>
+                    <span>{categoryList[category].children[index].title}</span>
                   </label>
-                ))}
-              </div>
+                </ProductCategory>
+              ))}
             </div>
           </div>
           <div className="form-row">
