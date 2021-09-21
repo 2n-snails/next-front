@@ -79,8 +79,8 @@ const ProductUploadContainer = styled.div`
     background-color: #e6429c;
   }
 `;
-const ProductCategory = styled.div<{ props }>`
-  background-color: ${(props) => (props?.select ? "aqua" : "none")};
+const ProductCategory = styled.div<{ select: boolean }>`
+  background-color: ${(props) => (props.select ? "aqua" : "none")};
 `;
 const ProductUpload: React.FC = () => {
   const [category, setCategory] = useState<number>(0);
