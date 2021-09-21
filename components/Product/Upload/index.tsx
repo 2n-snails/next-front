@@ -1,7 +1,36 @@
-import React, { useState } from "react";
+import axios from "@/lib/api";
+import Compressor from "compressorjs";
+import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
 
+// import axios from 'axios';
+// import Compressor from 'compressorjs';
+// document.getElementById('file').addEventListener('change', (e) => {
+//   const file = e.target.files[0];
+
+//   if (!file) {
+//     return;
+//   }
+
+//   new Compressor(file, {
+//     quality: 0.6,
+//     success(result) {
+//       const formData = new FormData();
+
+//       // The third parameter is required for server
+//       formData.append('file', result, result.name);
+
+//       // Send the compressed image file to server with XMLHttpRequest.
+//       axios.post('/path/to/upload', formData).then(() => {
+//         console.log('Upload success');
+//       });
+//     },
+//     error(err) {
+//       console.log(err.message);
+//     },
+//   });
+// });
 const ProductUploadContainer = styled.div`
   max-width: 1200px;
   margin: auto;
@@ -81,6 +110,16 @@ const ProductUploadContainer = styled.div`
 `;
 const ProductCategory = styled.div<{ select: boolean }>`
   background-color: ${(props) => (props.select ? "aqua" : "none")};
+`;
+
+const ProductUploadImage = styled.input`
+  height: 200px;
+  width: auto;
+`;
+
+const ProductUploadGrid = styled.div`
+  height: 200px;
+  width: auto;
 `;
 const ProductUpload: React.FC = () => {
   const [category, setCategory] = useState<number>(0);
@@ -255,6 +294,45 @@ const ProductUpload: React.FC = () => {
       ],
     },
   ];
+  const [imageList, setImageList] = useState([]);
+
+  const handleUploadImage = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) {
+      return;
+    }
+    const uploadImageList = [...imageList];
+
+    // eslint-disable-next-line no-new
+    new Compressor(file, {
+      quality: 0.9,
+      success(result) {
+        const reader = new FileReader();
+        reader.onload = function (event): void {
+          uploadImageList.push(event.target.result);
+        };
+        // // read the image file as a data URL.
+        reader.readAsDataURL(e.target.files[0]);
+
+        const formData = new FormData();
+        formData.append("file", result, result.name);
+        // next 에서 처리할 건데.
+        // axios.post("/api/s3-upload", formData).then(() => {
+        //   console.log("Upload success");
+        // });
+      },
+      error(err) {
+        console.log(err.message);
+      },
+    });
+
+    // lazy를 주기 위한 처리
+    setTimeout(() => {
+      setImageList(uploadImageList);
+    }, 1500);
+  };
+
   return (
     <ProductUploadContainer>
       <form action="/" method="post">
@@ -266,7 +344,18 @@ const ProductUpload: React.FC = () => {
             <label className="form-label" htmlFor="title">
               상품 이미지
             </label>
-            <input type="text" />
+            <ProductUploadImage
+              type="file"
+              formEncType="multipart/form-data"
+              onChange={(e) => handleUploadImage(e)}
+            />
+            {imageList.map((value, index) => {
+              return (
+                <ProductUploadGrid>
+                  <img width="200px" src={value} alt="" />
+                </ProductUploadGrid>
+              );
+            })}
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="title">
