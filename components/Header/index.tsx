@@ -47,13 +47,15 @@ const Header: React.FC = () => {
 
         <HeaderInfo>
           <button type="button">
-            <SellIcon />
+            <Link href="/auth/singup">
+              <a>
+                <SellIcon />
+              </a>
+            </Link>
           </button>
-
           <button type="button">
             <HeartIcon />
           </button>
-
           <button type="button" onClick={onClickClose}>
             <ProfileIcon />
           </button>
@@ -77,7 +79,6 @@ const Header: React.FC = () => {
                     </a>
                   </Link>
                 </li>
-
                 <li>
                   <Link href="#">
                     <a>
@@ -91,7 +92,6 @@ const Header: React.FC = () => {
           )}
         </HeaderInfo>
       </HeaderItems>
-
       {/* nav */}
       <HeaderNavigator>
         <div className="header-nav-wrapper">

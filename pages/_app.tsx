@@ -7,14 +7,20 @@ import theme from "@/styles/theme";
 import GlobalStyle from "@/styles/GlobalStyle";
 import LayoutComponents from "@/components/Layout";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const isNotLayoutList = ["/auth/singup", "/register"];
+
+const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <LayoutComponents>
+        {isNotLayoutList.indexOf(router?.pathname) !== -1 ? (
           <Component {...pageProps} />
-        </LayoutComponents>
+        ) : (
+          <LayoutComponents>
+            <Component {...pageProps} />
+          </LayoutComponents>
+        )}
       </ThemeProvider>
     </>
   );
