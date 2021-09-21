@@ -1,4 +1,4 @@
-import ProductUpload from "@/components/Product/Upload";
+import ProductUpload from "@/components/Product/Upload/Upload.Component";
 import React from "react";
 
 const index = () => {
