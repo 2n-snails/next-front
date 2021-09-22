@@ -3,11 +3,28 @@ import Products from "@/components/Product";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import theme from "@/styles/theme";
 
-const TabsWrapper = styled.ul``;
+const TabsWrapper = styled.ul`
+  display: flex;
+  margin: 0 15.5rem;
+`;
 
 const Tabs = styled.li`
   float: left;
+  list-style: none;
+  width: 100%;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${theme.color.gray_bb};
+  border-bottom: 1px solid ${theme.color.gray_cc};
+
+  &.active {
+    color: ${theme.color.blue_aa};
+    border-bottom: 3px solid ${theme.color.blue_aa};
+  }
 `;
 
 const ProfileContainer = styled.div`
@@ -56,11 +73,17 @@ const MyPage: React.FC = () => {
         </div>
       </ProfileContainer>
 
-      {/*<TabsWrapper>*/}
-      {/*  {*/}
-      {/*    tabsArray.map((title, i) => <Tabs key={i} onClick={() => onClickTab(i)}>{title}</Tabs>)*/}
-      {/*  }*/}
-      {/*</TabsWrapper>*/}
+      <TabsWrapper>
+        {tabsArray.map((title, i) => (
+          <Tabs
+            key={i}
+            className={tabId === i ? "active" : ""}
+            onClick={() => onClickTab(i)}
+          >
+            {title}
+          </Tabs>
+        ))}
+      </TabsWrapper>
 
       {tabId === 0 ? (
         <div>
