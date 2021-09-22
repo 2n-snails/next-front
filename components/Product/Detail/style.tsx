@@ -118,7 +118,7 @@ export const ProductDetailPostContainer = styled.div`
     .product_blank::before {
       padding: 0 0.8px;
       margin: 0 5px;
-      background-color: ${theme.color.gray_cc};
+      background-color: ${theme.color.greyscale_2};
       content: "";
     }
   }
@@ -141,7 +141,7 @@ export const ProductDetailPostContainer = styled.div`
       .product_blank {
         margin: 0 10px;
         height: 16px;
-        border: 0.5px solid ${theme.color.gray_cc};
+        border: 0.5px solid ${theme.color.greyscale_2};
         outline: none;
       }
     }
