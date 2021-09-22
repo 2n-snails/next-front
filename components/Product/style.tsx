@@ -35,7 +35,7 @@ export const ProductInfoContainerStyle = styled.div`
   margin-top: 3rem;
   width: 250px;
   height: 410px;
-  border: 1px solid ${theme.color.gray_cc};
+  border: 1px solid ${theme.color.greyscale_2};
   outline: none;
   border-radius: 8px;
   overflow: hidden;
@@ -56,7 +56,7 @@ export const ProductInfoContainerStyle = styled.div`
     display: inline-flex;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid ${theme.color.gray_cc};
+    border-bottom: 1px solid ${theme.color.greyscale_2};
 
     .product_main_image {
       img {
@@ -74,7 +74,7 @@ export const ProductInfoDetailStyle = styled.div`
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      color: ${theme.color.gray_aa};
+      color: ${theme.color.greyscale_7};
       /* 단어 단위로 줄바꿈 */
       word-break: keep-all;
     }
@@ -83,7 +83,7 @@ export const ProductInfoDetailStyle = styled.div`
   .product_blank {
     width: 0.5px;
     height: 16px;
-    border: 0.5px solid ${theme.color.gray_cc};
+    border: 0.5px solid ${theme.color.greyscale_2};
     outline: none;
   }
 
@@ -105,13 +105,13 @@ export const ProductInfoDetailStyle = styled.div`
       font-weight: normal;
       font-size: 13px;
       line-height: 20px;
-      color: ${theme.color.gray_bb};
+      color: ${theme.color.greyscale_5};
     }
   }
 
   .product_price {
     padding: 6px 0 11px 0;
-    color: ${theme.color.blue_aa};
+    color: ${theme.color.primary_6};
   }
 
   @media (max-width: 414px) {
@@ -156,7 +156,7 @@ export const ProductUserContainerStyle = styled.div`
     span {
       padding: 0 8px;
       font-size: 12px;
-      color: ${theme.color.gray_dd};
+      color: ${theme.color.gray_6a};
     }
   }
 

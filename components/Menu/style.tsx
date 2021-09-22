@@ -8,7 +8,7 @@ export const MenuStyle = styled.div`
   top: 50px;
   left: 50%;
   border-radius: 8px;
-  border: 1px solid ${theme.color.gray_cc};
+  border: 1px solid ${theme.color.greyscale_2};
   background-color: white;
 
   & > ul {
@@ -29,7 +29,7 @@ export const MenuStyle = styled.div`
         font-size: 15px;
         padding: 0 13px;
         font-weight: 500;
-        color: ${theme.color.blue_aa};
+        color: ${theme.color.primary_6};
       }
     }
   }
