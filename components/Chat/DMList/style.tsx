@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DMStyleContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 1080px;
   display: flex;
   flex-direction: column;
   background-color: #ffff;

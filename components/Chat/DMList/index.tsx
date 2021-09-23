@@ -26,7 +26,7 @@ const DMList = () => {
             <NavLink
               key={i}
               activeClassName="selected"
-              href={`/workspace/message/${user.id}`}
+              href={`/chat/detail/${user.id}`}
             >
               <div>
                 <span>{user.name}</span>

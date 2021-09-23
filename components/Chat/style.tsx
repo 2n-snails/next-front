@@ -8,13 +8,13 @@ import styled from "styled-components";
 
 export const ChatWrapper = styled.div`
   display: flex;
-  height: 1080px;
+  height: 100%;
+  /* height: 1080px; */
   /* grow : 1 shrink : 1 basis :0 */
   /* 모든 부분 확장,줄어들기 & 1:1비율 유지 */
   flex: 1;
-  background-color: red;
+  /* background-color: red; */
 `;
-export const ChaHeader = styled.div``;
 
 export const ChatListStyle = styled.nav`
   width: 389px;

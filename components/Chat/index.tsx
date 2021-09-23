@@ -1,14 +1,8 @@
 import React from "react";
 import DMList from "./DMList";
-import {
-  ChatListStyle,
-  ChatNameStyle,
-  Chats,
-  ChatWrapper,
-  MenuScroll,
-} from "./style";
+import { ChatListStyle, ChatNameStyle, ChatWrapper, MenuScroll } from "./style";
 
-const ChatList = () => {
+const ChatList: React.FC = ({ children }) => {
   return (
     // <ChatContainer>
     <ChatWrapper>
@@ -30,7 +24,7 @@ const ChatList = () => {
       {/* 채팅방 */}
       {/* 채팅목록에서 아무 채팅방을 클릭하는 순간 */}
       {/* 그 채팅방으로 이동하면서 UI변경. */}
-      <Chats>123</Chats>
+      {children}
     </ChatWrapper>
   );
 };
