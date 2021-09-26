@@ -81,12 +81,20 @@ export const ProductCategory = styled.div<{ select: boolean }>`
   background-color: ${(props) => (props.select ? "aqua" : "none")};
 `;
 
-export const ProductUploadImage = styled.input`
+export const ProductImageUploadField = styled.div`
+  background-color: aqua;
+  margin: auto;
   height: 200px;
-  width: auto;
+  width: 200px;
 `;
+// 파일 업로드 Form 으로 사용 하였으나,
+// useRef 로 처리할 예정
+// export const ProductUploadImage = styled.input`
+//   height: 200px;
+//   width: auto;
+// `;
 
-export const ProductUploadGrid = styled.div`
+export const ProductImageUploadPreview = styled.div`
   height: 200px;
   width: auto;
 `;
