@@ -1,28 +1,32 @@
 import Compressor from "compressorjs";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { categoryList } from "./category.json";
 import {
   ProductCategory,
+  ProductImageUploadField,
   ProductUploadContainer,
-  ProductUploadGrid,
-  ProductUploadImage,
+  ProductImageUploadPreview,
 } from "./Upload.Styles";
 
 const ProductUpload: React.FC = () => {
-  // 선택된 카테고리를 확인함.
+  // 선택된 상위 카테고리를 확인함.
   const [category, setCategory] = useState<number>(0);
   const handleChangeCategory = (value: number) => {
     setCategory(value);
   };
 
-  // 선택된 카테고리를 확인함.
+  // 선택된 하위 카테고리를 확인함.
   const [childCategory, setChildCategory] = useState<number>(0);
   const handleChangeChildCategory = (value: number) => {
     setChildCategory(value);
   };
 
-  // 업로드한 이미지를 목록에 담음.
+  const dragRef = useRef<HTMLDivElement | null>(null);
+  const ballRef = useRef<HTMLInputElement>(null);
+
+  // 업로드한 이미지를 배열에 담아 프리뷰와 FormData로 관리함.
   const [imageList, setImageList] = useState([]);
+
   const handleUploadImage = (e) => {
     const file = e.target.files[0];
 
@@ -60,6 +64,65 @@ const ProductUpload: React.FC = () => {
     }, 1500);
   };
 
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const handleDragIn = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
+  const handleDragOut = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setIsDragging(false);
+  }, []);
+
+  const handleDragOver = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (e.dataTransfer!.files) {
+      setIsDragging(true);
+    }
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: DragEvent): void => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      handleUploadImage(e);
+      setIsDragging(false);
+    },
+    [handleUploadImage],
+  );
+  const initDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.addEventListener("dragenter", handleDragIn);
+      dragRef.current.addEventListener("dragleave", handleDragOut);
+      dragRef.current.addEventListener("dragover", handleDragOver);
+      dragRef.current.addEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  const resetDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.removeEventListener("dragenter", handleDragIn);
+      dragRef.current.removeEventListener("dragleave", handleDragOut);
+      dragRef.current.removeEventListener("dragover", handleDragOver);
+      dragRef.current.removeEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  useEffect(() => {
+    initDragEvents();
+
+    return () => resetDragEvents();
+  }, [initDragEvents, resetDragEvents]);
+
+  const handleFileUpload = () => {
+    ballRef.current.click();
+  };
   return (
     <ProductUploadContainer>
       <form action="/" method="post">
@@ -68,23 +131,42 @@ const ProductUpload: React.FC = () => {
         </div>
         <div className="form-body">
           <div className="form-row">
-            <div className="form-title">
+            {/* form-label 은 우측에 위치함  */}
+            <div className="form-label">
               <label className="form-label" htmlFor="title">
                 상품 이미지
               </label>
             </div>
-            <ProductUploadImage
-              type="file"
-              formEncType="multipart/form-data"
-              onChange={(e) => handleUploadImage(e)}
-            />
-            {imageList.map((value, index) => {
-              return (
-                <ProductUploadGrid key={index}>
-                  <img width="200px" src={value} alt={index.toString()} />
-                </ProductUploadGrid>
-              );
-            })}
+            {/* form-field 는 좌측에 위치함  */}
+            <div className="form-field">
+              <ProductImageUploadField
+                className="file-upload"
+                ref={dragRef}
+                // onClick={handleFileUpload}
+                // onMouseLeave={() => {
+                //   console.log("Event:onMouseLeave");
+                // }}
+              >
+                <input
+                  hidden
+                  ref={ballRef}
+                  type="file"
+                  formEncType="multipart/form-data"
+                  onChange={(e) => handleUploadImage(e)}
+                />
+                <p>아이콘</p>
+                <p>
+                  <span>1</span> / 10
+                </p>
+              </ProductImageUploadField>
+              {imageList.map((value, index) => {
+                return (
+                  <ProductImageUploadPreview key={index}>
+                    <img width="200px" src={value} alt={index.toString()} />
+                  </ProductImageUploadPreview>
+                );
+              })}
+            </div>
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="title">
