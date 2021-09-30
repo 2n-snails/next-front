@@ -27,9 +27,12 @@ const ProductUpload: React.FC = () => {
   // 업로드한 이미지를 배열에 담아 프리뷰와 FormData로 관리함.
   const [imageList, setImageList] = useState([]);
 
+  // TODO: 파일을 못 읽어옴.
   const handleUploadImage = (e) => {
-    const file = e.target.files[0];
+    const { files } = e.dataTransfer;
+    const file = files && files[0];
 
+    console.log("35", file);
     if (!file) {
       return;
     }
@@ -44,7 +47,12 @@ const ProductUpload: React.FC = () => {
           uploadImageList.push(event.target.result);
         };
         // // read the image file as a data URL.
-        reader.readAsDataURL(e.target.files[0]);
+        if (e.target.files) {
+          reader.readAsDataURL(e.target.files[0]);
+        } else {
+          console.log(e.dataTransfer.files[0]);
+          reader.readAsDataURL(e.dataTransfer.files[0]);
+        }
 
         const formData = new FormData();
         formData.append("file", result, result.name);
@@ -52,6 +60,7 @@ const ProductUpload: React.FC = () => {
         // axios.post("/api/s3-upload", formData).then(() => {
         //   console.log("Upload success");
         // });
+        console.log(formData);
       },
       error(err) {
         console.log(err.message);
@@ -64,6 +73,7 @@ const ProductUpload: React.FC = () => {
     }, 1500);
   };
 
+  // TODO: 파일을 못읽는데
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const handleDragIn = useCallback((e: DragEvent): void => {
     e.preventDefault();
@@ -96,6 +106,7 @@ const ProductUpload: React.FC = () => {
     },
     [handleUploadImage],
   );
+
   const initDragEvents = useCallback((): void => {
     if (dragRef.current !== null) {
       dragRef.current.addEventListener("dragenter", handleDragIn);
@@ -123,6 +134,8 @@ const ProductUpload: React.FC = () => {
   const handleFileUpload = () => {
     ballRef.current.click();
   };
+
+  console.log(imageList);
   return (
     <ProductUploadContainer>
       <form action="/" method="post">
