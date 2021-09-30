@@ -8,6 +8,7 @@ import {
   ProductImageUploadPreview,
 } from "./Upload.Styles";
 
+// 리베이스 테스트
 const ProductUpload: React.FC = () => {
   // 선택된 상위 카테고리를 확인함.
   const [category, setCategory] = useState<number>(0);
