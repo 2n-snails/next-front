@@ -50,6 +50,7 @@ const ProductUpload: React.FC = () => {
         if (e.target.files) {
           reader.readAsDataURL(e.target.files[0]);
         } else {
+          // 이미지 파일 바이너리 변경 작업이 필요함.
           console.log(e.dataTransfer.files[0]);
           reader.readAsDataURL(e.dataTransfer.files[0]);
         }
@@ -57,6 +58,7 @@ const ProductUpload: React.FC = () => {
         const formData = new FormData();
         formData.append("file", result, result.name);
         // next 에서 처리할 건데.
+        // 상품 업로드 할 때 S3에 업로드 함.
         // axios.post("/api/s3-upload", formData).then(() => {
         //   console.log("Upload success");
         // });
