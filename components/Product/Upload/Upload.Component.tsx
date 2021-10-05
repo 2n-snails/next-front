@@ -1,3 +1,4 @@
+import Dropzone from "@/components/common/DropzoneSquare";
 import Compressor from "compressorjs";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { categoryList } from "./category.json";
@@ -22,9 +23,6 @@ const ProductUpload: React.FC = () => {
     setChildCategory(value);
   };
 
-  const dragRef = useRef<HTMLDivElement | null>(null);
-  const ballRef = useRef<HTMLInputElement>(null);
-
   // 업로드한 이미지를 배열에 담아 프리뷰와 FormData로 관리함.
   const [imageList, setImageList] = useState([]);
 
@@ -33,7 +31,6 @@ const ProductUpload: React.FC = () => {
     const { files } = e.dataTransfer;
     const file = files && files[0];
 
-    console.log("35", file);
     if (!file) {
       return;
     }
@@ -76,69 +73,12 @@ const ProductUpload: React.FC = () => {
     }, 1500);
   };
 
-  // TODO: 파일을 못읽는데
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const handleDragIn = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-  }, []);
-
-  const handleDragOut = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setIsDragging(false);
-  }, []);
-
-  const handleDragOver = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (e.dataTransfer!.files) {
-      setIsDragging(true);
-    }
-  }, []);
-
-  const handleDrop = useCallback(
-    (e: DragEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      handleUploadImage(e);
-      setIsDragging(false);
-    },
-    [handleUploadImage],
-  );
-
-  const initDragEvents = useCallback((): void => {
-    if (dragRef.current !== null) {
-      dragRef.current.addEventListener("dragenter", handleDragIn);
-      dragRef.current.addEventListener("dragleave", handleDragOut);
-      dragRef.current.addEventListener("dragover", handleDragOver);
-      dragRef.current.addEventListener("drop", handleDrop);
-    }
-  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-
-  const resetDragEvents = useCallback((): void => {
-    if (dragRef.current !== null) {
-      dragRef.current.removeEventListener("dragenter", handleDragIn);
-      dragRef.current.removeEventListener("dragleave", handleDragOut);
-      dragRef.current.removeEventListener("dragover", handleDragOver);
-      dragRef.current.removeEventListener("drop", handleDrop);
-    }
-  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-
-  useEffect(() => {
-    initDragEvents();
-
-    return () => resetDragEvents();
-  }, [initDragEvents, resetDragEvents]);
-
-  const handleFileUpload = () => {
-    ballRef.current.click();
+  const onFilesAdded = (files) => {
+    console.log(files);
+    // this.setState((prevState) => ({
+    //   files: prevState.files.concat(files),
+    // }));
   };
-
-  console.log(imageList);
   return (
     <ProductUploadContainer>
       <form action="/" method="post">
@@ -155,26 +95,7 @@ const ProductUpload: React.FC = () => {
             </div>
             {/* form-field 는 좌측에 위치함  */}
             <div className="form-field">
-              <ProductImageUploadField
-                className="file-upload"
-                ref={dragRef}
-                // onClick={handleFileUpload}
-                // onMouseLeave={() => {
-                //   console.log("Event:onMouseLeave");
-                // }}
-              >
-                <input
-                  hidden
-                  ref={ballRef}
-                  type="file"
-                  formEncType="multipart/form-data"
-                  onChange={(e) => handleUploadImage(e)}
-                />
-                <p>아이콘</p>
-                <p>
-                  <span>1</span> / 10
-                </p>
-              </ProductImageUploadField>
+              <Dropzone onFilesAddedProps={onFilesAdded} disabled={false} />
               {imageList.map((value, index) => {
                 return (
                   <ProductImageUploadPreview key={index}>
