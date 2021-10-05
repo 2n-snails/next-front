@@ -29,7 +29,7 @@ export const DropzoneContainer = styled.div`
   }
 `;
 
-const Dropzone: React.FC = ({ onFilesAddedProps, disabled }: any) => {
+const Dropzone: React.FC<any> = ({ onFilesAddedProps, disabled }: any) => {
   const fileInputRef = useRef(null);
   const [hightlight, setHightlight] = useState(false);
   //   constructor(props) {
