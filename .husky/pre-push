@@ -1,4 +1,29 @@
-#!/bin/sh
-"$(dirname "$0")/_/husky.sh"
+ #!/bin/sh
+ . "$(dirname "$0")/_/husky.sh"
+ echo '🏗️👷 커밋하기 전에 프로젝트 스타일링, 테스트 및 구축'
 
-yarn check-types
+ yarn lint ||
+ (
+     echo '😤🏀👋😤 yarn lint 실패 😤🏀👋😤
+           ESLint 검사에 실패했습니다. 위에 나열된 필수 사항을 변경하고 변경 사항을 추가한 후 커밋 & 푸시를 다시 시도하십시오.'
+     false;
+ )
+
+ yarn check-types ||
+ (
+     echo '🤡😂❌🤡 yarn check-types 실패함. 🤡😂❌🤡
+           ESLint 타입 검사에 실패했습니다. 위에 나열된 사항을 변경하시고
+           변경 사항을 추가한 후 커밋 & 푸시를 다시 시도해주세요.'
+     false;
+ )
+
+ echo '🤔🤔🤔🤔 빌드가 완료되면 PUSH 합니다 🤔🤔🤔🤔'
+
+ yarn build ||
+ (
+     echo '❌👷🔨❌ 빌드에 실패했습니다. ❌👷🔨❌
+           위의 오류를 확인한 후 커밋 & 푸시를 다시 시도해주세요.'
+     false;
+ )
+
+ echo '✅✅✅✅ 완료함. ✅✅✅✅'
