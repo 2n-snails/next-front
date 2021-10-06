@@ -1,4 +1,5 @@
 import Dropzone from "@/components/common/DropzoneSquare";
+import { FileToBase64 } from "@/utils/filelist_to_array";
 import Compressor from "compressorjs";
 import React, { useState } from "react";
 import { categoryList } from "./category.json";
@@ -23,59 +24,58 @@ const ProductUpload: React.FC = () => {
   };
 
   // 업로드한 이미지를 배열에 담아 프리뷰와 FormData로 관리함.
-  const [imageList, setImageList] = useState([]);
+  const [previewImage, setPreviewImage] = useState([]);
 
   // TODO: 파일을 못 읽어옴.
-  const handleUploadImage = (e) => {
-    const { files } = e.dataTransfer;
-    const file = files && files[0];
+  // const handleUploadImage = (e) => {
+  //   const { files } = e.dataTransfer;
+  //   const file = files && files[0];
 
-    if (!file) {
-      return;
-    }
-    const uploadImageList = [...imageList];
+  //   if (!file) {
+  //     return;
+  //   }
+  //   const uploadImageList = [...imageList];
 
-    // eslint-disable-next-line no-new
-    new Compressor(file, {
-      quality: 0.9,
-      success(result: any) {
-        const reader = new FileReader();
-        reader.onload = (event): void => {
-          uploadImageList.push(event.target.result);
-        };
-        if (e.target.files) {
-          reader.readAsDataURL(e.target.files[0]);
-        } else {
-          // 이미지 파일 바이너리 변경 작업이 필요함.
-          console.log(e.dataTransfer.files[0]);
-          reader.readAsDataURL(e.dataTransfer.files[0]);
-        }
+  //   // eslint-disable-next-line no-new
+  //   new Compressor(file, {
+  //     quality: 0.9,
+  //     success(result: any) {
+  //       const reader = new FileReader();
+  //       reader.onload = (event): void => {
+  //         uploadImageList.push(event.target.result);
+  //       };
+  //       if (e.target.files) {
+  //         reader.readAsDataURL(e.target.files[0]);
+  //       } else {
+  //         // 이미지 파일 바이너리 변경 작업이 필요함.
+  //         console.log(e.dataTransfer.files[0]);
+  //         reader.readAsDataURL(e.dataTransfer.files[0]);
+  //       }
 
-        const formData = new FormData();
-        formData.append("file", result, result.name);
-        // next 에서 처리할 건데.
-        // 상품 업로드 할 때 S3에 업로드 함.
-        // axios.post("/api/s3-upload", formData).then(() => {
-        //   console.log("Upload success");
-        // });
-        console.log(formData);
-      },
-      error(err) {
-        console.log(err.message);
-      },
-    });
+  //       const formData = new FormData();
+  //       formData.append("file", result, result.name);
+  //       // next 에서 처리할 건데.
+  //       // 상품 업로드 할 때 S3에 업로드 함.
+  //       // axios.post("/api/s3-upload", formData).then(() => {
+  //       //   console.log("Upload success");
+  //       // });
+  //       console.log(formData);
+  //     },
+  //     error(err) {
+  //       console.log(err.message);
+  //     },
+  //   });
+  // };
 
-    // lazy를 주기 위한 처리
+  const onFilesAdded = async (files: File[] | Blob[]): Promise<void> => {
+    const arrayList = [];
+    // 비동기 처리로 파일타입을 변경 했는데 어떻게 처리를 해야 잘 했다고 소문이 날 까
+    // 1. S3 무작위 업로드 후 파일 경로만 받는다. (가장 쉬움)
+    // 2. File | Blob 타입 버리고 base64로만 관리한다. (파일 업로드 시 base64 To File 포맷 후 업로드)
+    // 3. 기타 등등
     setTimeout(() => {
-      setImageList(uploadImageList);
-    }, 1500);
-  };
-
-  const onFilesAdded = (files) => {
-    console.log(files);
-    // this.setState((prevState) => ({
-    //   files: prevState.files.concat(files),
-    // }));
+      setPreviewImage(arrayList);
+    }, 4500);
   };
   return (
     <ProductUploadContainer>
@@ -93,8 +93,8 @@ const ProductUpload: React.FC = () => {
             </div>
             {/* form-field 는 좌측에 위치함  */}
             <div className="form-field">
-              <Dropzone onFilesAddedProps={onFilesAdded} disabled={false} />
-              {imageList.map((value, index) => {
+              <Dropzone handleFileUpload={onFilesAdded} disabled={false} />
+              {previewImage.map((value, index) => {
                 return (
                   <ProductImageUploadPreview key={index}>
                     <img width="200px" src={value} alt={index.toString()} />
