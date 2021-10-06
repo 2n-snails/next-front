@@ -32,16 +32,18 @@ export const DropzoneContainer = styled.div`
 const Dropzone: React.FC<any> = ({ onFilesAddedProps, disabled }: any) => {
   const fileInputRef = useRef(null);
   const [hightlight, setHightlight] = useState(false);
-  //   constructor(props) {
-  //     super(props);
 
-  //     this.openFileDialog = this.openFileDialog.bind(this);
-  //     this.onFilesAdded = this.onFilesAdded.bind(this);
-  //     this.onDragOver = this.onDragOver.bind(this);
-  //     this.onDragLeave = this.onDragLeave.bind(this);
-  //     this.onDrop = this.onDrop.bind(this);
-  //   }
-
+  // done
+  const fileListToArray = (list) => {
+    const array = [];
+    list.forEach((element) => {
+      array.push(list.item(element));
+    });
+    // for (let i = 0; i < list.length; i++) {
+    //   array.push(list.item(i));
+    // }
+    return array;
+  };
   // done
   const openFileDialog = () => {
     if (disabled) {
@@ -88,18 +90,6 @@ const Dropzone: React.FC<any> = ({ onFilesAddedProps, disabled }: any) => {
       onFilesAddedProps(array);
     }
     setHightlight(false);
-  };
-
-  // done
-  const fileListToArray = (list) => {
-    const array = [];
-    list.forEach((element) => {
-      array.push(list.item(element));
-    });
-    // for (let i = 0; i < list.length; i++) {
-    //   array.push(list.item(i));
-    // }
-    return array;
   };
 
   return (

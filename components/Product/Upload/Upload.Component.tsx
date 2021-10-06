@@ -1,10 +1,9 @@
 import Dropzone from "@/components/common/DropzoneSquare";
 import Compressor from "compressorjs";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { categoryList } from "./category.json";
 import {
   ProductCategory,
-  ProductImageUploadField,
   ProductUploadContainer,
   ProductImageUploadPreview,
 } from "./Upload.Styles";
@@ -41,10 +40,9 @@ const ProductUpload: React.FC = () => {
       quality: 0.9,
       success(result: any) {
         const reader = new FileReader();
-        reader.onload = function (event): void {
+        reader.onload = (event): void => {
           uploadImageList.push(event.target.result);
         };
-        // // read the image file as a data URL.
         if (e.target.files) {
           reader.readAsDataURL(e.target.files[0]);
         } else {
