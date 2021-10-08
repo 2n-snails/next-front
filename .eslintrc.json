@@ -35,7 +35,7 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/interactive-supports-focus": "off",
-
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/no-array-index-key": "off", // key값으로 index를 사용할수 있다.
     "comma-dangle": "off", // 마지막에 , 을 넣어주지 않는다.
     "arrow-body-style": "off", // 화살표 함수 안에 return을 사용 할 수 있다.

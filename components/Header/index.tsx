@@ -19,16 +19,16 @@ import { MenuStyle } from "../Menu/style";
 const Header: React.FC = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const onClickUserProfile = () => {
-    setShowUserMenu((prev) => !prev);
-  };
-  const onClickClose = (e) => {
+  // const onClickUserProfile = () => {
+  //   setShowUserMenu((prev) => !prev);
+  // };
+  const onClickClose = () => {
     setShowUserMenu((prev) => !prev);
   };
 
-  const onCloseModal = (e) => {
-    setShowUserMenu(false);
-  };
+  // const onCloseModal = (e) => {
+  //   setShowUserMenu(false);
+  // };
   return (
     <HeaderContainer>
       <HeaderItems>
@@ -47,13 +47,15 @@ const Header: React.FC = () => {
 
         <HeaderInfo>
           <button type="button">
-            <SellIcon />
+            <Link href="/auth/singup">
+              <a>
+                <SellIcon />
+              </a>
+            </Link>
           </button>
-
           <button type="button">
             <HeartIcon />
           </button>
-
           <button type="button" onClick={onClickClose}>
             <ProfileIcon />
           </button>
@@ -61,7 +63,7 @@ const Header: React.FC = () => {
             <MenuStyle>
               <ul>
                 <li>
-                  <Link href="#">
+                  <Link href="/chat">
                     <a>
                       <ChatIcon />
                       <span>채팅</span>
@@ -77,7 +79,6 @@ const Header: React.FC = () => {
                     </a>
                   </Link>
                 </li>
-
                 <li>
                   <Link href="#">
                     <a>
@@ -91,7 +92,6 @@ const Header: React.FC = () => {
           )}
         </HeaderInfo>
       </HeaderItems>
-
       {/* nav */}
       <HeaderNavigator>
         <div className="header-nav-wrapper">

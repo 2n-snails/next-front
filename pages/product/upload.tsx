@@ -1,8 +1,8 @@
-import Login from "@/components/Login/Login";
+import ProductUpload from "@/components/Product/Upload/Upload.Component";
 import React from "react";
 
 const index = () => {
-  return <Login />;
+  return <ProductUpload />;
 };
 
 export default index;

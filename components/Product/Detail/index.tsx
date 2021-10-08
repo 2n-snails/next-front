@@ -2,11 +2,13 @@ import React from "react";
 import ProductHeart from "@/assets/svg/Detail/detail_heart.svg";
 import ChatIcon from "@/assets/svg/Detail/Chat.svg";
 import StarIcon from "@/assets/svg/Detail/start.svg";
-import Link from "next/link";
 
 import ImageZoom from "@/components/ImageZoom";
+import { ProductDetailCommentContainer } from "@/components/Comments/style";
+import Comments from "@/components/Comments";
+import TextArea from "@/components/common/TextArea";
+import { Button } from "@/styles/common/Button";
 import {
-  ProductDetailCommentContainer,
   ProductDetailContainer,
   ProductDetailPostContainer,
   ProductDetailUserInfoContainer,
@@ -22,7 +24,7 @@ const ProductDetail: React.FC<Props> = ({ data }) => {
 
   const {
     Images,
-    Comments,
+    Comments: comments,
     User,
     productContent,
     productNo,
@@ -94,39 +96,18 @@ const ProductDetail: React.FC<Props> = ({ data }) => {
       </ProductDetailPostContainer>
       <p className="detail_police">신고하기</p>
 
-      {/* 상품 문의 Comment */}
+      {/* 댓글 List */}
       <ProductDetailCommentContainer>
         <h2>상품문의</h2>
-        <div>
-          <Link href="/">
-            <a>
-              <img src="" alt="" />
-            </a>
-          </Link>
-          <div>
-            <div>
-              <h2>빈티지러버</h2>
-            </div>
-            <div>
-              <p>1시간전</p>
-            </div>
-          </div>
-          <div>
-            <div>
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-            </div>
-            <div>
-              <p>안녕하세요~언제 구매하셨는지 알 수 있을까요?</p>
-            </div>
-            <div>
-              <button type="button">답글쓰기</button>
-            </div>
-          </div>
-        </div>
+        {comments.map((comment) => (
+          <Comments comment={comment} />
+        ))}
+
+        {/* Root Form */}
+        <form>
+          <TextArea />
+          <Button>댓글달기</Button>
+        </form>
       </ProductDetailCommentContainer>
     </ProductDetailContainer>
   );

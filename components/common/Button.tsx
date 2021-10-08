@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface StyledButtonProps {
   width: string | undefined;
 }
-export const Button = styled.button<StyledButtonProps>`
+export const ButtonStyle = styled.button<StyledButtonProps>`
   width: ${({ width }) => width || "100%"};
   height: 48px;
   border: none;
@@ -18,15 +18,15 @@ export const Button = styled.button<StyledButtonProps>`
 `;
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  width?: string | undefined;
   children?: React.ReactNode;
-  width: string | undefined;
 }
-const ButtonComponent: React.FC<IProps> = ({ children, width, ...props }) => {
+const Button: React.FC<IProps> = ({ width, children, ...props }) => {
   return (
-    <Button width={width} {...props}>
+    <ButtonStyle width={width} {...props}>
       {children}
-    </Button>
+    </ButtonStyle>
   );
 };
 
-export default React.memo(ButtonComponent);
+export default React.memo(Button);
