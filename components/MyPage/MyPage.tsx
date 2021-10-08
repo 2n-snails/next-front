@@ -18,12 +18,12 @@ const Tabs = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${theme.color.gray_bb};
-  border-bottom: 1px solid ${theme.color.gray_cc};
+  color: ${theme.color.greyscale_5};
+  border-bottom: 1px solid ${theme.color.greyscale_2};
 
   &.active {
-    color: ${theme.color.blue_aa};
-    border-bottom: 3px solid ${theme.color.blue_aa};
+    color: ${theme.color.primary_6};
+    border-bottom: 3px solid ${theme.color.primary_6};
   }
 `;
 
