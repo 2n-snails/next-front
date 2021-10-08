@@ -29,7 +29,7 @@ export const MenuStyle = styled.div`
         font-size: 15px;
         padding: 0 13px;
         font-weight: 500;
-        color: ${theme.color.primary_6};
+        color: ${theme.color.primary};
       }
     }
   }

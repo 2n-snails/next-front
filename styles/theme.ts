@@ -21,29 +21,18 @@ export const theme = {
     greyscale_11: "#131515",
     greyscale_12: "#0e0f10",
 
-    // secondary color (red)
-    secondary_1: "#ffafa0",
-    secondary_2: "#ffa796",
-    secondary_3: "#ff9f8d",
-    secondary_4: "#ff9783",
-    secondary_5: "#ff8f7a",
-    secondary_6: "#ff8770",
-    secondary_7: "#ff7258",
-    secondary_8: "#ff5e3f",
-    secondary_9: "#ff4927",
-    secondary_10: "#ff350e",
+    // secondary color (orange)
+    secondary_1: "#fed7ac",
+    secondary_2: "#fec788",
+    secondary_3: "#fdb76a",
+    secondary_4: "#fda748",
+    secondary_5: "#fc9727",
+    secondary_6: "#fc8706",
+    secondary_7: "#ee7e03",
+    secondary_8: "#cc6c02",
 
-    // primary color (blue)
-    primary_1: "#d4e3ff",
-    primary_2: "#b8d0ff",
-    primary_3: "#a9c7ff",
-    primary_4: "#9bbdff",
-    primary_5: "#8db4ff",
-    primary_6: "#70a1ff", // blue_aa -> primary_6
-    primary_7: "#4b89ff",
-    primary_8: "#2a73ff",
-    primary_9: "#0c5fff",
-    primary_10: "#0052f0",
+    // primary color (black)
+    primary: "#161616",
 
     black: "#222222",
     gray_6a: "#6a6a6a", // gray_dd -> gray_6a
