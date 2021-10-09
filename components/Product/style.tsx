@@ -111,7 +111,7 @@ export const ProductInfoDetailStyle = styled.div`
 
   .product_price {
     padding: 6px 0 11px 0;
-    color: ${theme.color.primary_6};
+    color: ${theme.color.primary};
   }
 
   @media (max-width: 414px) {
