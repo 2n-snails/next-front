@@ -1,125 +1,96 @@
-import React, { useCallback, useState } from "react";
+import StarIcon from "@/assets/svg/Detail/start.svg";
+import Products from "@/components/Product";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Products from "@/components/Product";
-import { productOptionList } from "@/lib/data/staticData";
-import Link from "next/link";
-import { Button } from "@/styles/common/Button";
-import { SelectBox } from "../common/SelectBox";
+import theme from "@/styles/theme";
 
-const MainContainer = styled.div`
-  margin-left: 2rem;
-  margin-right: 2rem;
-
-  .main_select_box {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-    padding: 1.5rem 0;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  width: 10rem;
-  height: 10rem;
-  margin-right: 2rem;
-  button {
-    margin-bottom: 1rem;
-    width: 10rem;
-    height: 2rem;
-    border-style: none;
-    border-radius: 2rem;
-    background-color: ${({ theme }) => theme.color.gray_c4};
-    cursor: pointer;
-  }
-
-  @media ${(props) => props.theme.mobile} {
-    display: flex;
-    width: 20rem;
-    height: 5rem;
-    margin-bottom: 1rem;
-    button {
-      width: 9rem;
-    }
-  }
-`;
-
-const ButtonHomeContainer = styled.div`
+const TabsWrapper = styled.ul`
   display: flex;
-  justify-content: space-between;
+  margin: 0 15.5rem;
+`;
 
-  @media ${(props) => props.theme.mobile} {
-    flex-direction: column;
+const Tabs = styled.li`
+  float: left;
+  list-style: none;
+  width: 100%;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${theme.color.greyscale_5};
+  border-bottom: 1px solid ${theme.color.greyscale_2};
+
+  &.active {
+    color: ${theme.color.primary_6};
+    border-bottom: 3px solid ${theme.color.primary_6};
   }
 `;
 
-const HomeContainer = styled.div`
-  display: grid;
+const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 3.625rem;
+  margin: 3.5rem 15.5rem 1.5rem;
 
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 3rem;
-  column-gap: 1rem;
-
-  @media ${(props) => props.theme.tablet} {
-    grid-template-columns: repeat(2, 1fr);
+  .user_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
   }
+`;
 
-  @media ${(props) => props.theme.mobile} {
-    grid-template-columns: repeat(1, 1fr);
-  }
+const ProfileImg = styled.img`
+  width: 3.625rem;
+  height: 3.625rem;
 `;
 
 const MyPage: React.FC = () => {
-  const [productOption, setProductOption] = useState<string | undefined>();
+  const [tabId, setTabId] = useState(0);
 
-  const { productsList } = useSelector((state: any) => state.products);
+  const data = useSelector((state: any) => state.products.productsList);
 
-  //* 상품 옵션 변경 시
-  const onChangeProductOption = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setProductOption(event.target.value);
-    },
-    [],
-  );
+  const onClickTab = (id) => {
+    setTabId(id);
+  };
+
+  const tabsArray = ["판매물품", "판매완료", "구매내역", "찜한상품", "내정보"];
 
   return (
-    <MainContainer>
-      {/* <UserInfo /> */}
+    <div>
+      <ProfileContainer>
+        <ProfileImg src="asdfsadf" alt="프로필" />
+        <div className="user_info">
+          <span>니트와바트</span>
+          <p>
+            <StarIcon />
+            <StarIcon />
+            <StarIcon />
+            <StarIcon />
+            <StarIcon />
+          </p>
+        </div>
+      </ProfileContainer>
 
-      {/* select box */}
-      <div className="main_select_box">
-        <SelectBox
-          type="normal"
-          options={productOptionList}
-          defaultValue={productOptionList[0]}
-          value={productOption}
-          onChange={onChangeProductOption}
-        />
-      </div>
+      <TabsWrapper>
+        {tabsArray.map((title, i) => (
+          <Tabs
+            key={i}
+            className={tabId === i ? "active" : ""}
+            onClick={() => onClickTab(i)}
+          >
+            {title}
+          </Tabs>
+        ))}
+      </TabsWrapper>
 
-      <ButtonHomeContainer>
-        <ButtonContainer>
-          <div className="button_container_top">
-            <Button>판매중인 상품</Button>
-            <Button>찜 상품</Button>
-          </div>
-          <div className="button_container_bottom">
-            <Button>내 상점 후기 보기</Button>
-            <Link href="/profile">
-              <Button>내 정보</Button>
-            </Link>
-          </div>
-        </ButtonContainer>
-
-        <HomeContainer>
-          {productsList.map((data: any) => (
-            <>
-              <Products data={data} />
-            </>
-          ))}
-        </HomeContainer>
-      </ButtonHomeContainer>
-    </MainContainer>
+      {tabId === 0 ? (
+        <div>
+          <Products data={data} />
+        </div>
+      ) : null}
+    </div>
   );
 };
 
